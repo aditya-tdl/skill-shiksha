@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["public", "uam"]
+}
+
+model user {
+  id         Int              @id @default(autoincrement())
+  name       String
+  email      String           @unique
+  gender     String
+  mobile     String           @unique
+  password   String
+  role       role             @default(STUDENT)
+  created_at DateTime         @default(now())
+  bookings   course_booking[]
+
+  @@index([email])
+  @@index([mobile])
+  @@schema("uam")
+}
+
+
+model course {
+  id           Int      @id @default(autoincrement())
+  title        String   @unique
+  slug         String   
+  description  String
+  price        Int
+  duration     String
+  isPopular    Boolean  @default(false)
+  emiAvailable Boolean  @default(false)
+  bookings     course_booking[]
+  image        String
+  image_url    String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@index([title])
+  @@index([slug])
+  @@schema("uam")
+}
+model course_booking {
+  id          Int           @id @default(autoincrement())
+  userId      Int
+  courseId    Int
+  status      BookingStatus @default(PENDING)
+  paymentMode PaymentMode
+  paymentId   String?
+  amountPaid  Int           @default(0)
+  bookedAt    DateTime      @default(now())
+  user        user          @relation(fields: [userId], references: [id])
+  course      course        @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId])
+  @@schema("uam")
+}
+
+model student_registration {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String
+  phone      String
+  program    String
+  status     String
+  gender     String
+  background String?
+  created_at DateTime @default(now())
+
+  @@schema("uam")
+}
+
+enum role {
+  STUDENT
+  ADMIN
+  MENTOR
+  @@schema("public")
+}
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+   @@schema("public")
+}
+
+enum PaymentMode {
+  ONLINE
+  OFFLINE
+  EMI
+  @@schema("public")
+}
