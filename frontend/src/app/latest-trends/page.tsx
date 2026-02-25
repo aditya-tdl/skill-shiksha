@@ -12,7 +12,9 @@ import {
     ArrowRight,
     Sparkles,
     Smartphone,
-    Database
+    Database,
+    FileText,
+    ExternalLink
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -201,6 +203,188 @@ export default function LatestTrendsPage() {
                     ))}
                 </motion.div>
 
+                {/* Industry Reports Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-32 max-w-6xl mx-auto"
+                >
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                            Industry Perspectives & Reports
+                        </h2>
+                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                            Dive deeper into the technological shifts shaping our world with comprehensive reports from leading global technology companies.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Google Cloud Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-500 border-none">Google Cloud</Badge>
+                                <CardTitle className="text-xl leading-tight">Data and AI Trends Report 2024</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    Google's latest insights into how generative AI is transitioning from proof-of-concept to full-scale production, and how organizations are building robust data foundations.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://cloud.google.com/resources/data-ai-trends" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Read Main Report
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://cloud.google.com/blog/products/ai-machine-learning" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            Google AI Blog
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Microsoft Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-sky-500/10 text-sky-500 border-none">Microsoft</Badge>
+                                <CardTitle className="text-xl leading-tight">Work Trend Index Annual Report</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    Microsoft's comprehensive analysis on how AI is reshaping the workplace, changing employee expectations, and redefining the skills needed for the future of work.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Read Main Report
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://blogs.microsoft.com/ai/" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            Microsoft AI News
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Gartner Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border-none">Gartner</Badge>
+                                <CardTitle className="text-xl leading-tight">Top Strategic Technology Trends</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    Gartner's authoritative outlook on the technologies that will drive significant disruption and opportunity over the next 36 months, focusing on AI Trust, Risk, and Security Management.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://www.gartner.com/en/articles/gartner-top-10-strategic-technology-trends-for-2024" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Read Main Report
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://www.gartner.com/en/insights/generative-ai" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            Gartner GenAI Insights
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* AWS Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-orange-500/10 text-orange-500 border-none">AWS</Badge>
+                                <CardTitle className="text-xl leading-tight">Cloud Security Report</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    Insights from Amazon Web Services on global cloud security trends, zero-trust architectures, compliance, and how enterprises are securing their cloud-native infrastructure.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://aws.amazon.com/security/" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Explore AWS Security
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://aws.amazon.com/blogs/security/" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            AWS Security Blog
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* IBM Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-indigo-500/10 text-indigo-500 border-none">IBM</Badge>
+                                <CardTitle className="text-xl leading-tight">Cost of a Data Breach Report</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    IBM's annual flagship report detailing the financial realities of data breaches, exploring the impact of security AI, automation, and incident response teams.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://www.ibm.com/reports/data-breach" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Read Main Report
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://www.ibm.com/thought-leadership/institute-business-value/" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            IBM Business Value
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Accenture Report */}
+                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                            <CardHeader className="pb-4">
+                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-purple-500/10 text-purple-500 border-none">Accenture</Badge>
+                                <CardTitle className="text-xl leading-tight">Technology Vision 2024</CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex-1 flex flex-col">
+                                <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                    Accenture's perspective on the technology trends that will have the most significant impact on companies, enterprise leaders, and massive digital disruption in the coming years.
+                                </p>
+                                <div className="flex flex-col gap-2 mt-auto">
+                                    <Link href="https://www.accenture.com/us-en/insights/technology/technology-vision" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="w-full justify-between group bg-background">
+                                            Read Main Report
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://www.accenture.com/us-en/insights/artificial-intelligence-summary-index" target="_blank" rel="noopener noreferrer">
+                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
+                                            Accenture AI Insights
+                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </motion.div>
+
                 {/* Bottom CTA */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -220,12 +404,14 @@ export default function LatestTrendsPage() {
                             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
                                 Join our comprehensive internship programs to get hands-on experience with these cutting-edge tools, frameworks, and methodologies.
                             </p>
-                            <Link href="/programs">
-                                <Button size="lg" className="rounded-full px-8 py-6 text-base font-medium shadow-lg hover:shadow-primary/25 transition-all duration-300">
-                                    Explore Our Programs
-                                    <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
-                            </Link>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link href="/programs">
+                                    <Button size="lg" className="rounded-full px-8 py-6 text-base font-medium shadow-lg hover:shadow-primary/25 transition-all duration-300">
+                                        Explore Our Programs
+                                        <ArrowRight className="ml-2 w-5 h-5" />
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
