@@ -53,15 +53,15 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-                <span>123 Tech Park, Sector 62, Noida, UP 201301</span>
+                <span>3/5 vijayant khand, lucknow, Uttar Pradesh</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-primary shrink-0" />
-                <span>+91 98765 43210</span>
+                <span>+91 7905339856</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-primary shrink-0" />
-                <span>hello@codecraftlabs.in</span>
+                <span>hello@skillshiksha.ai</span>
               </li>
             </ul>
           </div>
