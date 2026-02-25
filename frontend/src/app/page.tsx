@@ -15,14 +15,13 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
       <WhyChooseUs />
-      <FounderStory />
       <InternshipPrograms />
-
-      <OfficeGallery />
       <ProjectsShowcase />
       <MentorSection />
-      <Testimonials />
       <PlacementPartners />
+      <Testimonials />
+      <FounderStory />
+      <OfficeGallery />
       <CTASection />
     </main>
   );
