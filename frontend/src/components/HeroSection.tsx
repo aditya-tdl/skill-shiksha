@@ -50,7 +50,7 @@ const HeroSection = () => {
                 </Button>
               </Link>
               <Link href="#career-quiz">
-                <Button size="lg" variant="outline" className="rounded-full px-8 text-base border-primary/50 text-primary hover:bg-primary/5 w-full sm:w-auto gap-2">
+                <Button size="lg" variant="outline" className="rounded-full px-8 text-base border-primary/50 text-primary  w-full sm:w-auto gap-2">
                   <Sparkles size={18} /> Take Career Quiz
                 </Button>
               </Link>

@@ -11,9 +11,9 @@ const navLinks = [
   { label: "Programs", href: "/programs" },
   { label: "Latest Trends", href: "/latest-trends" },
   { label: "Mentors", href: "/mentors" },
-  { label: "Office", href: "#office" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Projects", href: "#projects" },
+  { label: "Office", href: "/office" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Projects", href: "/projects" },
 ];
 
 const Navbar = () => {

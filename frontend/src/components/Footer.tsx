@@ -33,9 +33,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Programs</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#programs" className="hover:text-foreground transition-colors">MERN Internship</Link></li>
-              <li><Link href="#programs" className="hover:text-foreground transition-colors">React Internship</Link></li>
-              <li><Link href="#programs" className="hover:text-foreground transition-colors">Backend Internship</Link></li>
+              <li><Link href="/programs" className="hover:text-foreground transition-colors">MERN Internship</Link></li>
+              <li><Link href="/programs" className="hover:text-foreground transition-colors">React Internship</Link></li>
+              <li><Link href="/programs" className="hover:text-foreground transition-colors">Backend Internship</Link></li>
             </ul>
           </div>
 
@@ -43,8 +43,8 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link href="#" className="hover:text-foreground transition-colors">About Us</Link></li>
-              <li><Link href="#mentors" className="hover:text-foreground transition-colors">Mentors</Link></li>
-              <li><Link href="#testimonials" className="hover:text-foreground transition-colors">Success Stories</Link></li>
+              <li><Link href="/mentors" className="hover:text-foreground transition-colors">Mentors</Link></li>
+              <li><Link href="/testimonials" className="hover:text-foreground transition-colors">Success Stories</Link></li>
             </ul>
           </div>
 
