@@ -7,6 +7,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Code, Rocket, Trophy, Briefcase, GraduationCap } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const courseData = {
     mern: {
@@ -221,9 +223,19 @@ const courseData = {
 
 export default function ProgramsPage() {
     return (
+        <Suspense fallback={<div className="min-h-screen pt-24 pb-16 flex items-center justify-center">Loading programs...</div>}>
+            <ProgramsContent />
+        </Suspense>
+    );
+}
+
+function ProgramsContent() {
+    const searchParams = useSearchParams();
+    const defaultTab = searchParams.get("tab") || "mern";
+
+    return (
         <main className="min-h-screen pt-24 pb-16">
             <div className="section-container">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -241,7 +253,7 @@ export default function ProgramsPage() {
                 </motion.div>
 
                 {/* Course Tabs */}
-                <Tabs defaultValue="mern" className="w-full">
+                <Tabs defaultValue={defaultTab} className="w-full">
                     <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl mb-12">
                         <TabsTrigger value="mern" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">MERN Stack</TabsTrigger>
                         <TabsTrigger value="nodejs" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">Node.js Backend</TabsTrigger>
@@ -255,8 +267,16 @@ export default function ProgramsPage() {
                             <div className="grid lg:grid-cols-3 gap-8">
                                 <Card className="lg:col-span-2 glass-card border-none">
                                     <CardHeader>
-                                        <CardTitle className="text-3xl font-display">{course.title}</CardTitle>
-                                        <CardDescription className="text-lg pt-2">{course.description}</CardDescription>
+                                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                                            <div>
+                                                <CardTitle className="text-3xl font-display">{course.title}</CardTitle>
+                                                <CardDescription className="text-lg pt-2">{course.description}</CardDescription>
+                                            </div>
+                                            <div className="flex flex-col items-start sm:items-end bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
+                                                <span className="text-2xl font-bold font-display text-primary">₹15,000</span>
+                                                <span className="text-xs text-muted-foreground mr-1">/ EMI available</span>
+                                            </div>
+                                        </div>
                                     </CardHeader>
                                     <CardContent>
                                         <div className="grid sm:grid-cols-3 gap-6 mt-4">

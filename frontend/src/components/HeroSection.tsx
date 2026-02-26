@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, MapPin, Users, Calendar } from "lucide-react";
+import { ArrowRight, MapPin, Users, Calendar, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-office.jpg";
@@ -45,13 +45,15 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/apply">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 text-base gap-2">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 text-base gap-2 w-full sm:w-auto">
                   Apply Now <ArrowRight size={18} />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-base border-border">
-                Explore Programs
-              </Button>
+              <Link href="#career-quiz">
+                <Button size="lg" variant="outline" className="rounded-full px-8 text-base border-primary/50 text-primary hover:bg-primary/5 w-full sm:w-auto gap-2">
+                  <Sparkles size={18} /> Take Career Quiz
+                </Button>
+              </Link>
             </div>
 
             <div className="flex gap-8 text-sm text-muted-foreground">

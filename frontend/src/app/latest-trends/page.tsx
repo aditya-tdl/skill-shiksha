@@ -124,9 +124,60 @@ const itemVariants = {
     },
 };
 
+const industryReports = [
+    {
+        company: "Deloitte",
+        title: "Tech Trends 2026",
+        description: "Top companies are shifting from testing tech to real production systems. Focuses on AI moving from experiment to real business impact, modern engineering, and human-AI collaboration.",
+        colorClass: "text-lime-500",
+        bgClass: "bg-lime-500/10",
+        link: "https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends.html"
+    },
+    {
+        company: "Capgemini",
+        title: "Top Tech Trends 2026",
+        description: "2026 is called the “year of truth for AI” as companies expect measurable ROI. Highlights AI becoming the backbone of software, Cloud 3.0 evolution, and intelligent operations.",
+        colorClass: "text-cyan-500",
+        bgClass: "bg-cyan-500/10",
+        link: "https://www.capgemini.com/insights/research-library/top-tech-trends-of-2026/"
+    },
+    {
+        company: "IBM",
+        title: "Tech & AI Trends 2026",
+        description: "Experts predict a rapid expansion of AI-driven systems across industries with a focus on enterprise AI adoption, cybersecurity resilience, quantum tech advances, and workflow automation.",
+        colorClass: "text-indigo-500",
+        bgClass: "bg-indigo-500/10",
+        link: "https://www.ibm.com/think/news/ai-tech-trends-predictions-2026"
+    },
+    {
+        company: "Gartner",
+        title: "Strategic Tech Trends 2026",
+        description: "These core trends will shape the next 5 years of IT strategy. Emphasizes AI-native development platforms, autonomous multi-agent systems, confidential computing, and AI supercomputing.",
+        colorClass: "text-emerald-500",
+        bgClass: "bg-emerald-500/10",
+        link: "https://www.gartner.com/en/articles/top-technology-trends-2026"
+    },
+    {
+        company: "NTT DATA",
+        title: "Technology Foresight 2026",
+        description: "Demonstrates how companies accelerate growth using AI and advanced tech. Focuses on digital transformation, continuous AI innovation speed, and pragmatic business tech adoption.",
+        colorClass: "text-blue-500",
+        bgClass: "bg-blue-500/10",
+        link: "https://www.nttdata.com/global/en/news/press-release/2026/january/012700"
+    },
+    {
+        company: "Globant",
+        title: "Tech Trends Report 2026",
+        description: "Focus on achieving measurable AI impact with robust governance. Highlights the rise of Agentic AI, breakthroughs in quantum communication, and transformative robotics innovation.",
+        colorClass: "text-purple-500",
+        bgClass: "bg-purple-500/10",
+        link: "https://reports.globant.com/en/trends/tech-trends-report-2026/"
+    }
+];
+
 export default function LatestTrendsPage() {
     return (
-        <div className="min-h-screen bg-background pt-[120px] pb-16 overflow-hidden relative">
+        <div className="min-h-screen bg-background  pb-16 overflow-hidden relative">
             {/* Background decoration */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]" />
@@ -134,9 +185,8 @@ export default function LatestTrendsPage() {
             </div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                {/* Hero Section */}
                 <div className="flex flex-col items-center text-center space-y-6 mb-20 max-w-4xl mx-auto">
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
@@ -145,29 +195,29 @@ export default function LatestTrendsPage() {
                             <Sparkles className="w-4 h-4 mr-2" />
                             Technology Radar 2026
                         </Badge>
-                    </motion.div>
+                    </motion.div> */}
 
-                    <motion.h1
+                    {/* <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70"
                     >
                         Latest Trends in <span className="text-primary italic">Development</span>
-                    </motion.h1>
+                    </motion.h1> */}
 
-                    <motion.p
+                    {/* <motion.p
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-muted-foreground text-lg md:text-xl leading-relaxed"
                     >
                         Explore the cutting-edge technologies and paradigms shaping the future of software development, digital transformation, and the global tech ecosystem.
-                    </motion.p>
+                    </motion.p> */}
                 </div>
 
                 {/* Trends Grid */}
-                <motion.div
+                {/* <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
                     variants={containerVariants}
                     initial="hidden"
@@ -177,7 +227,6 @@ export default function LatestTrendsPage() {
                         <motion.div key={trend.id} variants={itemVariants} className="h-full">
                             <Card className="h-full border bg-card/40 backdrop-blur-md hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col group overflow-hidden relative">
 
-                                {/* Subtle gradient overlay on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-colors duration-500" />
 
                                 <CardHeader className="relative z-10">
@@ -201,7 +250,7 @@ export default function LatestTrendsPage() {
                             </Card>
                         </motion.div>
                     ))}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Industry Reports Section */}
                 <motion.div
@@ -221,167 +270,27 @@ export default function LatestTrendsPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Google Cloud Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-500 border-none">Google Cloud</Badge>
-                                <CardTitle className="text-xl leading-tight">Data and AI Trends Report 2024</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    Google's latest insights into how generative AI is transitioning from proof-of-concept to full-scale production, and how organizations are building robust data foundations.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://cloud.google.com/resources/data-ai-trends" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Read Main Report
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://cloud.google.com/blog/products/ai-machine-learning" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            Google AI Blog
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* Microsoft Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-sky-500/10 text-sky-500 border-none">Microsoft</Badge>
-                                <CardTitle className="text-xl leading-tight">Work Trend Index Annual Report</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    Microsoft's comprehensive analysis on how AI is reshaping the workplace, changing employee expectations, and redefining the skills needed for the future of work.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Read Main Report
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://blogs.microsoft.com/ai/" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            Microsoft AI News
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* Gartner Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border-none">Gartner</Badge>
-                                <CardTitle className="text-xl leading-tight">Top Strategic Technology Trends</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    Gartner's authoritative outlook on the technologies that will drive significant disruption and opportunity over the next 36 months, focusing on AI Trust, Risk, and Security Management.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://www.gartner.com/en/articles/gartner-top-10-strategic-technology-trends-for-2024" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Read Main Report
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://www.gartner.com/en/insights/generative-ai" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            Gartner GenAI Insights
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* AWS Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-orange-500/10 text-orange-500 border-none">AWS</Badge>
-                                <CardTitle className="text-xl leading-tight">Cloud Security Report</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    Insights from Amazon Web Services on global cloud security trends, zero-trust architectures, compliance, and how enterprises are securing their cloud-native infrastructure.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://aws.amazon.com/security/" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Explore AWS Security
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://aws.amazon.com/blogs/security/" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            AWS Security Blog
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* IBM Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-indigo-500/10 text-indigo-500 border-none">IBM</Badge>
-                                <CardTitle className="text-xl leading-tight">Cost of a Data Breach Report</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    IBM's annual flagship report detailing the financial realities of data breaches, exploring the impact of security AI, automation, and incident response teams.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://www.ibm.com/reports/data-breach" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Read Main Report
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://www.ibm.com/thought-leadership/institute-business-value/" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            IBM Business Value
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* Accenture Report */}
-                        <Card className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
-                            <CardHeader className="pb-4">
-                                <Badge variant="outline" className="w-fit mb-4 text-xs font-semibold uppercase tracking-wider bg-purple-500/10 text-purple-500 border-none">Accenture</Badge>
-                                <CardTitle className="text-xl leading-tight">Technology Vision 2024</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-1 flex flex-col">
-                                <p className="text-muted-foreground text-sm mb-6 flex-1">
-                                    Accenture's perspective on the technology trends that will have the most significant impact on companies, enterprise leaders, and massive digital disruption in the coming years.
-                                </p>
-                                <div className="flex flex-col gap-2 mt-auto">
-                                    <Link href="https://www.accenture.com/us-en/insights/technology/technology-vision" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="w-full justify-between group bg-background">
-                                            Read Main Report
-                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                        </Button>
-                                    </Link>
-                                    <Link href="https://www.accenture.com/us-en/insights/artificial-intelligence-summary-index" target="_blank" rel="noopener noreferrer">
-                                        <Button variant="ghost" size="sm" className="w-full justify-between group text-muted-foreground hover:text-foreground">
-                                            Accenture AI Insights
-                                            <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
+                        {industryReports.map((report, idx) => (
+                            <Card key={idx} className="flex flex-col border-border/50 bg-card hover:border-primary/50 transition-colors shadow-sm hover:shadow-md">
+                                <CardHeader className="pb-4">
+                                    <Badge variant="outline" className={`w-fit mb-4 text-xs font-semibold uppercase tracking-wider ${report.bgClass} ${report.colorClass} border-none`}>{report.company}</Badge>
+                                    <CardTitle className="text-xl leading-tight">{report.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent className="flex-1 flex flex-col">
+                                    <p className="text-muted-foreground text-sm mb-6 flex-1">
+                                        {report.description}
+                                    </p>
+                                    <div className="flex flex-col gap-2 mt-auto">
+                                        <Link href={report.link} target="_blank" rel="noopener noreferrer">
+                                            <Button variant="outline" className="w-full justify-between group bg-background">
+                                                Read Main Report
+                                                <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
                     </div>
                 </motion.div>
 

@@ -9,12 +9,14 @@ import MentorSection from "@/components/MentorSection";
 import Testimonials from "@/components/Testimonials";
 import PlacementPartners from "@/components/PlacementPartners";
 import CTASection from "@/components/CTASection";
+import CareerQuiz from "@/components/CareerQuiz";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
       <WhyChooseUs />
+      <CareerQuiz />
       <InternshipPrograms />
       <ProjectsShowcase />
       <MentorSection />
