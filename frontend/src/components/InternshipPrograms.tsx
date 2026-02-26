@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Clock, Users, IndianRupee, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 const programs = [
   {
@@ -93,8 +94,10 @@ const InternshipPrograms = () => {
                   <span className="text-2xl font-bold font-display">{p.price}</span>
                   <span className="text-xs text-muted-foreground ml-1">/ EMI available</span>
                 </div>
-                <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-1">
-                  Apply <ArrowRight size={14} />
+                <Button asChild size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-1">
+                  <Link href="/apply">
+                    Apply <ArrowRight size={14} />
+                  </Link>
                 </Button>
               </div>
             </motion.div>
