@@ -119,7 +119,7 @@ export default function RegisterPage() {
     return (
         <main className="min-h-screen bg-background flex flex-col lg:flex-row overflow-hidden py-10 lg:py-10 transition-colors duration-500 px-0 md:px-20">
             {/* Left Side: Branding & Visuals */}
-            <div className="lg:w-[40%] bg-zinc-50 dark:bg-zinc-950 relative flex flex-col justify-center p-8 lg:p-16 overflow-hidden border-b lg:border-b-0 lg:border-r border-border/10">
+            <div className="lg:w-[40%] bg-zinc-50 dark:bg-zinc-950 relative flex flex-col justify-center p-8 lg:p-12 overflow-hidden border-b lg:border-b-0 lg:border-r border-border/10">
                 {/* Background effects */}
                 <div className="absolute top-0 left-0 w-full h-full opacity-50 dark:opacity-100">
                     <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
@@ -130,12 +130,12 @@ export default function RegisterPage() {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="mb-12"
+                        className="mb-8"
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-6">
                             <Sparkles size={12} /> Tech Shiksha Admission
                         </div>
-                        <h1 className="text-4xl lg:text-6xl font-bold text-zinc-900 dark:text-white leading-tight mb-6">
+                        <h1 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-tight mb-6">
                             Start Your <span className="text-primary italic">Success</span> Story Today.
                         </h1>
                         <p className="text-zinc-600 dark:text-zinc-400 text-sm lg:text-base leading-relaxed max-w-sm">
@@ -154,7 +154,7 @@ export default function RegisterPage() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 + i * 0.1 }}
-                                className="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-900/50 border border-border/10 dark:border-zinc-800 hover:border-primary/30 dark:hover:border-zinc-700 transition-all group shadow-sm dark:shadow-none"
+                                className="flex items-start gap-4 p-4  rounded-2xl bg-white dark:bg-zinc-900/50 border border-border/10 dark:border-zinc-800 hover:border-primary/30 dark:hover:border-zinc-700 transition-all group shadow-sm dark:shadow-none"
                             >
                                 <div className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-primary group-hover:scale-110 transition-transform">
                                     {item.icon}

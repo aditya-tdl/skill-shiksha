@@ -126,6 +126,14 @@ const itemVariants = {
 
 const industryReports = [
     {
+        company: "Google",
+        title: "Technology Blog",
+        description: "The latest updates on Google's technology innovations, AI advancements, and engineering breakthroughs shaping the future of the web.",
+        colorClass: "text-red-500",
+        bgClass: "bg-red-500/10",
+        link: "https://blog.google/intl/en-in/company-news/technology/"
+    },
+    {
         company: "Deloitte",
         title: "Tech Trends 2026",
         description: "Top companies are shifting from testing tech to real production systems. Focuses on AI moving from experiment to real business impact, modern engineering, and human-AI collaboration.",
