@@ -1,4 +1,6 @@
-import HeroSection from "@/components/HeroSection";
+
+import AnimatedHeroSection from "@/components/AnimatedHeroSection";
+import StudentFeedback from "@/components/StudentFeedback";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import FounderStory from "@/components/FounderStory";
 import InternshipPrograms from "@/components/InternshipPrograms";
@@ -10,11 +12,14 @@ import Testimonials from "@/components/Testimonials";
 import PlacementPartners from "@/components/PlacementPartners";
 import CTASection from "@/components/CTASection";
 import CareerQuiz from "@/components/CareerQuiz";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <HeroSection />
+      <AnimatedHeroSection />
+      {/* <HeroSection /> */}
+      <StudentFeedback />
       <WhyChooseUs />
       <CareerQuiz />
       <InternshipPrograms />

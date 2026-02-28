@@ -24,12 +24,6 @@ const features = [
     title: "Expert Mentors",
     description: "Learn directly from senior developers with 5+ years at top tech companies.",
   },
-  {
-    icon: Briefcase,
-    title: "Placement Assistance",
-    description: "Get interview prep, resume reviews, and direct referrals to our hiring partners.",
-  },
-
 ];
 
 const WhyChooseUs = () => {
@@ -61,13 +55,23 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass-card rounded-2xl p-6 border border-border/50 glow-hover transition-all duration-300 hover:-translate-y-1"
+              className="relative group p-[1px] rounded-3xl overflow-hidden hover:-translate-y-2 transition-transform duration-500"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                <f.icon size={24} className="text-primary" />
+              {/* Animated Dark Border Gradient Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-black/10 to-transparent dark:from-white/20 dark:via-slate-800/80 dark:to-black/60 opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative h-full bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl px-6 py-8 rounded-3xl overflow-hidden z-10 border border-black/5 dark:border-white/5">
+                {/* Subtle Inner Glow */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 dark:bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/20 dark:bg-blue-500/10 rounded-full blur-3xl" />
+
+                <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_4px_rgba(255,255,255,0.1)] relative z-20">
+                  <f.icon size={28} className="text-primary group-hover:text-primary/80 dark:group-hover:text-white transition-colors drop-shadow-md" />
+                </div>
+
+                <h3 className="font-display text-slate-900 dark:text-white font-bold text-xl mb-3 relative z-20">{f.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300 relative z-20 leading-relaxed">{f.description}</p>
               </div>
-              <h3 className="font-display font-semibold text-lg mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground">{f.description}</p>
             </motion.div>
           ))}
         </div>

@@ -163,37 +163,41 @@ export default function CareerQuiz() {
     const progressPercentage = ((currentQuestionIdx) / quizQuestions.length) * 100;
 
     return (
-        <section id="career-quiz" className="p-1 md:p-16 relative overflow-hidden bg-background">
+        <section id="career-quiz" className="p-4 md:p-10 relative overflow-hidden bg-background">
             {/* Decorative Background */}
-            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-3xl -z-10 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
-            <div className="section-container flex flex-col items-center justify-center max-w-3xl mx-auto w-full">
+            <div className="section-container flex flex-col items-center justify-center max-w-4xl mx-auto w-full">
                 {!showResult ? (
                     <div className="w-full">
                         {/* Header & Progress */}
-                        <div className="text-center mb-12">
-                            <Badge variant="outline" className="mb-4 text-primary border-primary/20 bg-primary/5 px-4 py-1 text-sm rounded-full">
-                                Career Path Matcher
+                        <div className="text-center mb-10">
+                            <Badge variant="outline" className="mb-4 text-primary border-primary/20 bg-primary/10 px-5 py-1.5 text-sm rounded-full font-bold">
+                                🎯 Career Path Matcher
                             </Badge>
-                            <h2 className="text-3xl md:text-5xl font-bold mb-8 font-display">Discover Your <span className="gradient-text">Tech Persona</span></h2>
+                            <h2 className="text-3xl md:text-5xl font-black mb-6 font-display">Discover Your <span className="gradient-text">Tech Persona</span></h2>
 
-                            {/* Progress Bar */}
-                            <div className="w-full bg-secondary rounded-full h-2.5 mb-2 overflow-hidden">
-                                <motion.div
-                                    className="bg-primary h-2.5 rounded-full"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${progressPercentage}%` }}
-                                    transition={{ duration: 0.5 }}
-                                />
+                            {/* Enhanced Progress Bar */}
+                            <div className="max-w-xl mx-auto flex items-center gap-4">
+                                <span className="text-sm font-bold text-muted-foreground w-12 text-right">Q {currentQuestionIdx + 1}</span>
+                                <div className="flex-1 bg-secondary rounded-full h-3 overflow-hidden border border-border/50">
+                                    <motion.div
+                                        className="bg-primary h-full rounded-full relative"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${progressPercentage}%` }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                    >
+                                        {/* Sparkle effect on progress bar */}
+                                        <div className="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-r from-transparent to-white/30" />
+                                    </motion.div>
+                                </div>
+                                <span className="text-sm font-bold text-muted-foreground w-12">{quizQuestions.length}</span>
                             </div>
-                            <p className="text-sm text-muted-foreground text-right relative z-10">
-                                Question {currentQuestionIdx + 1} of {quizQuestions.length}
-                            </p>
                         </div>
 
                         {/* Question Card */}
-                        <div className="relative">
+                        <div className="relative mt-8">
                             <AnimatePresence mode="wait" custom={direction}>
                                 <motion.div
                                     key={currentQuestionIdx}
@@ -205,27 +209,46 @@ export default function CareerQuiz() {
                                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                     className="w-full"
                                 >
-                                    <div className="border border-border/50 bg-card/60 backdrop-blur-md shadow-lg rounded-xl overflow-hidden">
-                                        <div className="p-4 md:p-10">
-                                            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-foreground leading-tight">
+                                    <div className="bg-card/40 dark:bg-card/10 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-3xl overflow-hidden border border-white/20 dark:border-white/5 relative">
+                                        {/* Top Accent Line */}
+                                        <div className="h-1.5 w-full bg-gradient-to-r from-primary via-blue-500 to-purple-500" />
+
+                                        <div className="p-6 md:p-12 relative z-10">
+                                            {/* Question Text */}
+                                            <h3 className="text-2xl md:text-4xl font-extrabold mb-10 text-foreground text-center leading-tight">
                                                 {currentQuestion.question}
                                             </h3>
 
-                                            <div className="grid grid-cols-1 gap-4">
-                                                {currentQuestion.options.map((option, idx) => (
-                                                    <button
-                                                        key={idx}
-                                                        onClick={() => handleAnswer(option.category)}
-                                                        className="bg-background hover:bg-secondary border border-border/50 hover:border-primary/50 text-left p-4 rounded-xl transition-all duration-200 flex items-center gap-4 group shadow-sm hover:shadow-md"
-                                                    >
-                                                        <div className="bg-secondary/50 p-3 rounded-lg text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-colors">
-                                                            {option.icon}
-                                                        </div>
-                                                        <span className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
-                                                            {option.text}
-                                                        </span>
-                                                    </button>
-                                                ))}
+                                            {/* Options Grid */}
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                                                {currentQuestion.options.map((option, idx) => {
+                                                    const letter = String.fromCharCode(65 + idx); // A, B, C, D
+                                                    return (
+                                                        <button
+                                                            key={idx}
+                                                            onClick={() => handleAnswer(option.category)}
+                                                            className="relative bg-white/50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-800 border-2 border-transparent hover:border-primary/50 text-left p-5 md:p-6 rounded-2xl transition-all duration-300 flex items-center gap-5 group shadow-sm hover:shadow-xl hover:-translate-y-1"
+                                                        >
+                                                            {/* Option Letter Indicator */}
+                                                            <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                                                                <span className="text-xl font-bold text-slate-500 dark:text-slate-400 group-hover:text-white">
+                                                                    {letter}
+                                                                </span>
+                                                            </div>
+
+                                                            <div className="flex-1">
+                                                                <span className="text-lg md:text-xl font-semibold text-slate-700 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-white transition-colors">
+                                                                    {option.text}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Icon hidden on mobile, visible on desktop */}
+                                                            <div className="hidden md:flex text-slate-300 dark:text-slate-600 group-hover:text-primary/40 transition-colors">
+                                                                {option.icon}
+                                                            </div>
+                                                        </button>
+                                                    );
+                                                })}
                                             </div>
                                         </div>
                                     </div>

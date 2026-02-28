@@ -133,7 +133,7 @@ export default function RegisterPage() {
                         className="mb-8"
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-6">
-                            <Sparkles size={12} /> Tech Shiksha Admission
+                            <Sparkles size={12} /> Skill Shiksha Admission
                         </div>
                         <h1 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-tight mb-6">
                             Start Your <span className="text-primary italic">Success</span> Story Today.

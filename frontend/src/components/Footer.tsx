@@ -36,6 +36,7 @@ const Footer = () => {
               <li><Link href="/programs?tab=mern" className="hover:text-foreground transition-colors">MERN Internship</Link></li>
               <li><Link href="/programs?tab=react" className="hover:text-foreground transition-colors">React Internship</Link></li>
               <li><Link href="/programs?tab=nodejs" className="hover:text-foreground transition-colors">Backend Internship</Link></li>
+              <li><Link href="/programs?tab=flutter" className="hover:text-foreground transition-colors">Flutter Internship</Link></li>
             </ul>
           </div>
 
@@ -57,7 +58,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-primary shrink-0" />
-                <span>+91 7905339856</span>
+                <span>+91 7505084414</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-primary shrink-0" />

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillOffice | Professional Offline Internship Institute</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "secondary": "#3b82f6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0a0c",
+                        "surface-dark": "#161022",
+                        "border-dark": "#2f2348",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(47, 35, 72, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #a492c9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, #5b13ec 0%, #3b82f6 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
+    <!-- Top Navigation -->
+    <header class="fixed top-0 w-full z-50 glass-card border-b border-border-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-2xl">rocket_launch</span>
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight">SkillOffice</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Programs</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Office Tour</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Mentors</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Showcase</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="px-6 py-2.5 rounded-xl cta-gradient text-white text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+                        Join Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4">
+            <div class="absolute inset-0 z-0">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-background-dark/60 via-background-dark/80 to-background-dark z-10">
+                </div>
+                <img class="w-full h-full object-cover"
+                    data-alt="Modern high-tech open office interior with glass walls"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI05_2phI_T6ZzkU0p_EbcFvYcFjqw44uJT2UlpZfFUx4JieB2f2vX1WXElXq-yA6JPTs0OJDh9mC_i2MHf4p_lp3Q-ZbHD_Cb8BWUyqjknSOsrmY8sDY45ZvqD4vT5zmcVA8Jvhf507t3QxJCM4brUMwLi9Gpi7qtGJcdSbr9xz0yqxaEOn_9UZkmdUwKLL4_Tth768yeDwwtGQ83yuEupSN_dK647SXJEICeMupjMWxGy3Fm7vu46FCiCIM9MM_5NOOIaZ4azldZ" />
+            </div>
+            <div class="relative z-20 max-w-4xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    Admissions Open for Winter 2024
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 gradient-text">
+                    Learn Real Skills in <br />
+                    <span class="text-primary">Real Office</span> Environment
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    Stop watching tutorials. Start building production-grade software in our high-performance workspace
+                    with direct mentorship from FAANG engineers.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button
+                        class="w-full sm:w-auto px-10 py-4 rounded-xl cta-gradient text-white text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/25">
+                        Apply for Internship
+                    </button>
+                    <button
+                        class="w-full sm:w-auto px-10 py-4 rounded-xl border border-border-dark bg-white/5 hover:bg-white/10 text-white text-lg font-bold transition-all">
+                        View Curriculum
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Why Choose Us -->
+        <section class="py-24 bg-background-light dark:bg-background-dark px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why SkillOffice?</h2>
+                    <p class="text-slate-500 dark:text-slate-400">The gap between academic theory and industry reality
+                        ends here.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-colors">
+                        <div
+                            class="size-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">corporate_fare</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Corporate Culture</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Experience daily standups, code
+                            reviews, and agile workflows in a professional physical office.</p>
+                    </div>
+                    <div
+                        class="p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-colors">
+                        <div
+                            class="size-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">group_work</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">1:1 Mentorship</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Work side-by-side with senior
+                            developers from top tech firms who guide your every step.</p>
+                    </div>
+                    <div
+                        class="p-8 rounded-2xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-colors">
+                        <div
+                            class="size-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">terminal</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Live Projects</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Don't just build clones.
+                            Contribute to actual client projects and production-ready applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Internship Programs -->
+        <section class="py-24 bg-slate-100 dark:bg-[#0f0a1a] px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Internship Tracks</h2>
+                        <p class="text-slate-500 dark:text-slate-400">Intensive 3-month offline training programs
+                            designed for high-impact roles.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="p-2 rounded-lg border border-border-dark hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="p-2 rounded-lg border border-border-dark hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Program 1 -->
+                    <div
+                        class="rounded-2xl overflow-hidden bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:shadow-2xl hover:shadow-primary/5 transition-all">
+                        <div class="relative h-56">
+                            <img class="w-full h-full object-cover"
+                                data-alt="React and Node.js code on multiple monitors"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2L0EWr2WYiGDY9eeWi8vuVuEeFttM_shnMI3wudnOdKtCfD8XBd1umIp_tKfrXQvVETxqJyuIGVn-JWm7f4oqVW7NZjKQFN8TPDaqinNsiYh8Ct3R49ZzBFDoj_sDN6yy-89M8xTFwRYoS19olTAXCoJNcVxZvb1NNxhd7jR6gik_Y_9_AFd2DUuidtUykvhdZN2Dsk7kMlhcE9xj8X5Qh7NLwZcOIq7RaiZ7OzeR65V0q1tbRsW7fes56RDFfIIk3gwS3bqmNhNY" />
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider animate-pulse">
+                                Only 3 Seats Left
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">MERN Stack Mastery</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-500 mb-6">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">schedule</span> 12 Weeks</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span> Offline Only</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Tuition</span>
+                                    <span class="text-2xl font-black text-primary">$499</span>
+                                </div>
+                                <button
+                                    class="px-5 py-2 rounded-lg border border-primary text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all">
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Program 2 -->
+                    <div
+                        class="rounded-2xl overflow-hidden bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:shadow-2xl hover:shadow-primary/5 transition-all">
+                        <div class="relative h-56">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Mobile app design and development on a smartphone and laptop"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKbUaQBAc9BtMRVfMnJzkfC2Z0P7HVb9-id8MCEGkrKDeD9PvWb2Rvps62LgUoVdy42K1psbMdRSdfB3iL6whHdpSNBzqobY-vIWnEXEpEwjw7Te1mWCuUdJh9glZonKIvYiuzRjO5fbW5P0WZzqe3pS7KvmvO8gXqrpdKMqUdo3ldQaHxYGhWXsIsvBJIuKabFK1Of5ttSxidBKT6DY8Dz8H_DN1qfPHdGjwWwzHntFWEK1uw69-rfE7PmnLgNUBf8BVQvEuJSVZ6" />
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider">
+                                Only 2 Seats Left
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">React Native Specialist</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-500 mb-6">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">schedule</span> 10 Weeks</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span> Offline Only</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Tuition</span>
+                                    <span class="text-2xl font-black text-primary">$399</span>
+                                </div>
+                                <button
+                                    class="px-5 py-2 rounded-lg border border-primary text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all">
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Program 3 -->
+                    <div
+                        class="rounded-2xl overflow-hidden bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:shadow-2xl hover:shadow-primary/5 transition-all">
+                        <div class="relative h-56">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Server racks and backend architecture visual"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXZaqret-jH25lKE6fCUHCdxiaPCYCn_BsX2XWLoTJ3cjT-ws__JddK-RNjyyRFUAeG4St7nxuVMWpx99HRGfUF4PPCBfClOeWzCLyXjbQcSci7_JCZJNCrNUOgMI_yQ9HgZOpd0KCv8lXncnOJ3RXewan6bOnFArsiVcIdvMtzijx88_qKBn_OnBAC1JxL-aevLbpKv6FfNCSfZR-4UC70h9tceEjhjOqZaRL8HuPFCcPGsOJ7_brpsJeHrfbyRT9QA0OSnXHrjzA" />
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 rounded-full bg-green-500 text-white text-[10px] font-bold uppercase tracking-wider">
+                                8 Seats Left
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Backend Architecture</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-500 mb-6">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">schedule</span> 14 Weeks</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span> Offline Only</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Tuition</span>
+                                    <span class="text-2xl font-black text-primary">$449</span>
+                                </div>
+                                <button
+                                    class="px-5 py-2 rounded-lg border border-primary text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all">
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Office Environment Gallery -->
+        <section class="py-24 px-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                    <div class="max-w-xl text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Premium Office Environment</h2>
+                        <p class="text-slate-500 dark:text-slate-400">Our campus is more than just a classroom. It's a
+                            professional workspace equipped with ergonomic chairs, high-speed fiber, and dedicated
+                            brainstorming zones.</p>
+                    </div>
+                    <button
+                        class="mt-6 md:mt-0 flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                        Take a Virtual Tour <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-12 grid-rows-2 gap-4 h-[600px]">
+                    <div class="col-span-8 row-span-2 rounded-2xl overflow-hidden relative group">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Large team collaborating in a modern office space"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUT_ubBpx6I-ZhB6mAG4_VJfoinGu9_qsDh9c1IB1IZ3H5y8aJJEPOJ-GOH-x_S39lFaYNKI2bF-_oFQ9OWSQtwEl-fIjTD_BJEHm2X2iRDCPOsnFQ5gcTxMeW0UPDc46zGfG3gavIX2TcjJXFShIetXC6ArVVxPJeWnfLRz6_3ryE-lJ5bEZBYPgXBUpFJC8u1lmhmvqgMFnv81yn159Y9JNQAIjvCWY9qKweKBxiSVQ6jiuDcMELXH4-NNXUQ2Jr5RxlydzZpjkZ" />
+                    </div>
+                    <div class="col-span-4 row-span-1 rounded-2xl overflow-hidden relative group">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Quiet individual focus area with ergonomic setup"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTOOIiYY5oGqsjIYnGbYRRKDPmBqUyIwg5mSykusT-1x5_KJF5Wsc52nVNPYz5bl2Gx78_Zgj6VSh_kSR3z25Vep3Xby6922Y6yyVZXUQhvkZU0Y8duDfINxBOyhKTAcJqaobrssi9CCM5NuSx6XpGhlcBiBu20jGWdPfwYf8vK5v7GY-_3hBZgYS6pb3yLAqAV3kt_ISn5URZ-0kxWifsrohXWI293OTtd32s0GG2yJ3sN7WapIyek8cWyxrofv25MMBz7LO7xIWV" />
+                    </div>
+                    <div class="col-span-4 row-span-1 rounded-2xl overflow-hidden relative group">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Collaborative meeting room with whiteboards"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjLAUhlckQyEQ94VY3P4PJaOsujYOvGhLZ2G106hlEkn2InTMYfpfZmZAhiuEBVqcyQz3SHC5Ax34nbMPYEMxA4glNB08BMh2Xz6W7y_w1dmT7HXh734h6bWxi1g1xn34mDSTh3Nx6oTXNcIrmb7wtxm7p9TyRavRvMMdnTZge5bi914eP4e3DBzFheo4ZMnJ25v9xuhPmxNgD5M98lDAHOPGh6uLNrCr0aXc4rK1t8fvBCUJo-v1E-5ozaegl26qQtg1Nc-4qOwqJ" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mentors Grid -->
+        <section class="py-24 bg-surface-dark px-4 border-y border-border-dark">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Learn from the Best</h2>
+                    <p class="text-slate-400">Our mentors bring experience from the world's leading tech companies.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- Mentor 1 -->
+                    <div class="text-center group">
+                        <div class="relative size-32 md:size-40 mx-auto mb-6">
+                            <div
+                                class="absolute inset-0 rounded-full border-2 border-primary group-hover:scale-110 transition-transform">
+                            </div>
+                            <img class="w-full h-full rounded-full object-cover p-2"
+                                data-alt="Portrait of a male software engineer mentor"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHLkp4uzb83UOduMfQ-zqNoQkppYLLbazlWLE-urvEOE6yq5mGX5V5PMjnPThiEHhjJS-dA3kwUfoDLyq5x02kpCMstSwIZnNL1tGDvu-t9O1MJACG49QqIFo5Q8oRVql2lLbA4NawS3h2vd0_rKsVTC1FaDqrDtuMrVjj_j2rcIutUWfTqrgKZvnCmIHMpfvYHioYC9-LDfmV4ySmAm6WbZlwRB5mrzDnfjtvFe3VPRfpWz0-24mFReLFQFrDVntZWgx1m72b16Ug" />
+                            <div
+                                class="absolute -bottom-2 -right-2 size-12 bg-white rounded-full flex items-center justify-center p-2 shadow-xl">
+                                <img class="w-full" data-alt="Google logo"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7dmraiNYo3y6h-TpTIDkn814OlV-A5Va0Cm8MxpqJlxvDu7LUHNRDFQ8aga4wNmCVV_52OcAeGVjl8K-6hQpwObTxtwhyPePTjf_X2tg5wbmE4iY7s7-elklMX_FQQVRSQumWRzqqQv_0tNWAL40xqbDoNnNE4n0Df54Ix7XTVCVS7XLd2P_NoFoC0N-y3aS6rk0LMWlwH_6vck2CXggsquNaAO-0XTMqHw4_OjxiTyvQHiZZQl-6lPKvC9sslvi33xWCsZByYsnp" />
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold">Alex Rivera</h4>
+                        <p class="text-sm text-slate-400">Senior Dev, Google</p>
+                    </div>
+                    <!-- Mentor 2 -->
+                    <div class="text-center group">
+                        <div class="relative size-32 md:size-40 mx-auto mb-6">
+                            <div
+                                class="absolute inset-0 rounded-full border-2 border-primary group-hover:scale-110 transition-transform">
+                            </div>
+                            <img class="w-full h-full rounded-full object-cover p-2"
+                                data-alt="Portrait of a female technical architect mentor"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsHDW4HCfS8XRp0iHS0-tKTulPGhx5Fn_tYiQG4OmTXKZL83GRUBBQVS9QswUoKhmTx1tEZpFg-0lqZHpYRwfKVD0ukeT3Tkph6z01QRnfVWt-FCoVAsrI4WwMLe7aE2ISLVTOkKXx9TWbRVY1a3mTQrHmljI7Yhhiswta6X-darvLFEvWFNp5EYpIaqC3etECOkOzoQuG4_EQvdXhA17MdcjYsn4IB9-TElXHiB3DgDC19Pw7AY34KLJi5hNIroh6z0HaFXXMnK1-" />
+                            <div
+                                class="absolute -bottom-2 -right-2 size-12 bg-white rounded-full flex items-center justify-center p-2 shadow-xl">
+                                <img class="w-full h-3" data-alt="Amazon logo"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuApvuY5SXOtypQKT_O9OQPUZuGOkhDqkI7bRQAsJKAUSpL-g6Yuc3YlMQzKu63s34UVkYBtRdcryVQPCeu3jhzzEJyEtZf9Lbc1Nsqz1R6Di3ELuUMetZo77DPZ-rDMHFlhS14s_8xy2AtYGP9E1gQGfxxRSPV26kCCWgP-U_MOclqodQbKl4StAW5cLD_DiFQhm97Zp5Q-el59aoV7RMssSqlBGfeJa-3zTHGkw5UcNVBmip9PlOIPIDIsghO5NMOAW5gE5Ouf04Qs" />
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold">Sarah Chen</h4>
+                        <p class="text-sm text-slate-400">Architect, Amazon</p>
+                    </div>
+                    <!-- Mentor 3 -->
+                    <div class="text-center group">
+                        <div class="relative size-32 md:size-40 mx-auto mb-6">
+                            <div
+                                class="absolute inset-0 rounded-full border-2 border-primary group-hover:scale-110 transition-transform">
+                            </div>
+                            <img class="w-full h-full rounded-full object-cover p-2"
+                                data-alt="Portrait of a male backend engineer mentor"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRslzZDvmobOUrf4ZzjBwf8XM6Gch6xGc4eTmAH6i7qYYhawmtdzzhm_-YN9C_UZPrw65mwq6KtwFcW3OpO5QmosrW-b0U7xQ6NClzRsFX7lTlJgjag-mjLGDQm8xc6ccr56bdvSB8j7XwWCbirCjKno719vCAn9rNfE8weGf8-IyOY6yTboApQV5hpUGWRn4e_xIR2zpsEDL83Wua73yEZsVD2rkk_Dfg29ar8Tw65FWaGCj10wX6NcznlUdck_cYrwAlQhPPMraa" />
+                            <div
+                                class="absolute -bottom-2 -right-2 size-12 bg-white rounded-full flex items-center justify-center p-2 shadow-xl">
+                                <img class="w-full" data-alt="Meta logo"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuChv2G4E-XdqxqicCI4t5Pd1S5w7VObt45_YJ9OAA-0HgraZ5EJPjRvs6NC9AtuxIyIAxpBqfvf1-XliQndoJmViPKbXlR49UYJDFmL39R-nK7wMqXR_tI6bjDsEIo4p67dlKE4DFkM33aby7LDMmemyX9BBBY06TP2JILkSwqOy4aoR_GfdXRpaV_G2z4wJOKhUaxe2aEGByOFL5HHQcFJJNhSjOGWDuFHty4_PrCeUDU5hHi9JKj5Ozh2I6gGIyCbsMDwGBG6An8O" />
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold">David Kim</h4>
+                        <p class="text-sm text-slate-400">Staff Engineer, Meta</p>
+                    </div>
+                    <!-- Mentor 4 -->
+                    <div class="text-center group">
+                        <div class="relative size-32 md:size-40 mx-auto mb-6">
+                            <div
+                                class="absolute inset-0 rounded-full border-2 border-primary group-hover:scale-110 transition-transform">
+                            </div>
+                            <img class="w-full h-full rounded-full object-cover p-2"
+                                data-alt="Portrait of a female engineering manager mentor"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV1612xA0N9OlapFPZ-hg34Twr0H_xGXO_zFuarwHeocNcXLGZQvqCOUvhIeKW1BSiHsysfp0_u3VAzR9dl6Xruzf86O5MksAZXJF38fLwqjtNFmvoLbwYfKJnjqMYFKUL7mfQsoPq52vdXalhwdpy8Y4UqtAveRHRvKVcPjWb6RM-LxraM8jDCwhKBxVFcLWnpn6jrgteBHF3X7K3HKd5C9iXdyRXFMep4mk9THhIIwmIdH6E76mfzY8Bc73VU-RKQfGHw7t2pkZ_" />
+                            <div
+                                class="absolute -bottom-2 -right-2 size-12 bg-white rounded-full flex items-center justify-center p-2 shadow-xl">
+                                <img class="w-full" data-alt="Microsoft logo"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9g3h5xNqnkhwCPambsuDRFmJqQW1_Z8pqeIlmXBl3J2dLJHEcEIY3vW8SipjbuSzUrSHTq1A_xKhmlSej-3rvYwdwERd41oMalUBOHtrJGseOAE8sm3kzd9DOoYq5GSQPjsgCre2lfKw7JAWKu7D7Bfds5JYNlnSmFHQIDZXMmE5W51TDp4r9OCAel3bOB9uyAYo1v58ZD4Pw1Q79qTqEQAAsOIh46y0BTLiGT7w_FDXXzqYvub--ZNEbRExjKaeDa095iapB_A52" />
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold">Elena Rodriguez</h4>
+                        <p class="text-sm text-slate-400">Lead Dev, Microsoft</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials -->
+        <section class="py-24 px-4 bg-background-light dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Student Stories</h2>
+                    <p class="text-slate-500">From our office directly into the industry.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="p-10 rounded-3xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark relative">
+                        <span
+                            class="material-symbols-outlined text-primary text-6xl opacity-20 absolute top-4 left-4">format_quote</span>
+                        <p class="text-lg mb-8 relative z-10">"The offline environment at SkillOffice changed everything
+                            for me. Being able to tap my mentor on the shoulder when I was stuck on a bug saved me weeks
+                            of frustration."</p>
+                        <div class="flex items-center gap-4">
+                            <img class="size-12 rounded-full object-cover" data-alt="Student avatar"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfPxTYP0kXRWd7Q59YRKoLWiygIYposZScHVG_jHKtIDQrAKwuQiCIb9QTpWRNO_yNh4zOo9zXaEogrE9fnBo9_Knj0bIFa8YkCRPnPuppgYkfFoVBEzUHenbRwD_NL5KYydXsmMh9CLo5CwsrNph4r9M9sTE2kX23seGB3ewnrOVYodkN1Xxoxs74Al6-bb-eFG54VmVpe_5Q66k4xBOzYqc5L2UAPJ0mHRO3GccGCeJkyUqyM2YA7YlABVIYQwJ8mPxjtQ82AsbA" />
+                            <div>
+                                <h5 class="font-bold">Jordan Miller</h5>
+                                <p class="text-xs text-primary font-medium">Now Frontend Dev @ Stripe</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-10 rounded-3xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark relative">
+                        <span
+                            class="material-symbols-outlined text-primary text-6xl opacity-20 absolute top-4 left-4">format_quote</span>
+                        <p class="text-lg mb-8 relative z-10">"I built a complete logistics dashboard for a real client
+                            during my 3 months here. That project alone got me three job offers before I even finished
+                            the internship."</p>
+                        <div class="flex items-center gap-4">
+                            <img class="size-12 rounded-full object-cover" data-alt="Student avatar"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgEnRgZt4i1I6Gjsa_amXPYdUQf6e01BqZbbqjzQfsZIgpwZqzfPuIwibFZmHqg7oqUr4lNE-UjF6Ab5qmsNzktITyi2tJNPUTv9H5DAymUINpoEelYNJL3sZFx7sO_cxyny3NnnM_EZWXIeo9EdYPumh-qEKgoF2Ohpr7yJ0HM2bd3pgcKb4vjmWFwhGp4kfmc1rOSeoA8nXc0nrfKQO8IONzWWgFrQJNoMt7wEHekj9sX-FzVFj5CBpdpYWHQlN015S-VunbXLxJ" />
+                            <div>
+                                <h5 class="font-bold">Priya Sharma</h5>
+                                <p class="text-xs text-primary font-medium">Now Backend Engineer @ Uber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Final -->
+        <section class="py-24 px-4">
+            <div
+                class="max-w-5xl mx-auto rounded-3xl cta-gradient p-12 md:p-20 text-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"></path>
+                            </pattern>
+                        </defs>
+                        <rect fill="url(#grid)" height="100%" width="100%"></rect>
+                    </svg>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-8 relative z-10">Ready to start your <br
+                        class="hidden md:block" /> professional journey?</h2>
+                <p class="text-lg mb-10 opacity-90 max-w-2xl mx-auto relative z-10">Don't wait. Our cohorts fill up
+                    months in advance. Secure your physical desk today and start learning the right way.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+                    <button
+                        class="w-full sm:w-auto px-12 py-5 rounded-xl bg-white text-primary text-lg font-black hover:scale-105 transition-transform shadow-2xl">
+                        Apply Now
+                    </button>
+                    <button
+                        class="w-full sm:w-auto px-12 py-5 rounded-xl border-2 border-white/30 bg-white/10 text-white text-lg font-bold hover:bg-white/20 transition-all">
+                        Talk to a Mentor
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-background-dark pt-20 pb-10 px-4 border-t border-border-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                        </div>
+                        <h2 class="text-lg font-bold tracking-tight">SkillOffice</h2>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Empowering next-gen developers through
+                        intensive physical training and real-world project experience.</p>
+                    <div class="flex gap-4">
+                        <a class="size-10 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                        </a>
+                        <a class="size-10 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">linked_camera</span>
+                        </a>
+                        <a class="size-10 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">link</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Internships</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a class="hover:text-primary transition-colors" href="#">Full-Stack Development</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Mobile App Track</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Cloud Architecture</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Resources</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a class="hover:text-primary transition-colors" href="#">Placement Stats</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Office Tour</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Curriculum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <p class="text-sm text-slate-500 mb-2">123 Tech Avenue, Silicon Hills</p>
+                    <p class="text-sm text-slate-500 mb-6">Bangalore, IN 560001</p>
+                    <p class="text-sm font-bold text-white">hello@skilloffice.io</p>
+                    <p class="text-sm font-bold text-white">+1 (555) 000-0000</p>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-border-dark flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+                <p>© 2024 SkillOffice Training Institute. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a class="hover:text-white" href="#">Privacy Policy</a>
+                    <a class="hover:text-white" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
