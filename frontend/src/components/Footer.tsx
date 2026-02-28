@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
+  console.log("footer")
   return (
     <footer className="border-t border-border/30 py-12 lg:py-16">
       <div className="section-container">
