@@ -160,8 +160,7 @@
 }
 
 @utility gradient-text {
-  @apply bg-clip-text text-transparent;
-  background-image: var(--gradient-primary);
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60;
 }
 
 @utility gradient-border {
@@ -219,6 +218,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }

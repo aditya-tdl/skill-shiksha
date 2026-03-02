@@ -211,7 +211,7 @@ export default function CareerQuiz() {
                                 >
                                     <div className="bg-card/40 dark:bg-card/10 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-3xl overflow-hidden border border-white/20 dark:border-white/5 relative">
                                         {/* Top Accent Line */}
-                                        <div className="h-1.5 w-full bg-gradient-to-r from-primary via-blue-500 to-purple-500" />
+                                        <div className="h-1.5 w-full bg-gradient-to-r from-primary to-primary/60" />
 
                                         <div className="p-6 md:p-12 relative z-10">
                                             {/* Question Text */}

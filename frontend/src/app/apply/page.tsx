@@ -6,7 +6,8 @@ import {
     User, Mail, Phone, BookOpen, Briefcase,
     ChevronRight, ChevronLeft, CheckCircle2,
     ArrowRight, MessageSquare, ShieldCheck,
-    Star, Users, Trophy, Sparkles
+    Star, Users, Trophy, Sparkles,
+    Palette, Bug, Server, MoreHorizontal
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,6 +28,11 @@ const programs = [
     { id: "nodejs", label: "Node.js", desc: "Backend Expert", icon: <ArrowRight size={16} /> },
     { id: "react", label: "React.js", desc: "Frontend Master", icon: <ArrowRight size={16} /> },
     { id: "flutter", label: "Flutter", desc: "Mobile Apps", icon: <ArrowRight size={16} /> },
+    { id: "uiux", label: "UI/UX Designer", desc: "Creative Design", icon: <Palette size={16} /> },
+    { id: "tester", label: "Manual Tester", desc: "Quality Assurance", icon: <Bug size={16} /> },
+    { id: "pm", label: "Project Manager", desc: "Agile Leadership", icon: <Briefcase size={16} /> },
+    { id: "devops", label: "DevOps", desc: "Cloud & CI/CD", icon: <Server size={16} /> },
+    { id: "other", label: "Other", desc: "Different Path", icon: <MoreHorizontal size={16} /> },
 ];
 
 const statuses = [
@@ -49,10 +55,44 @@ export default function RegisterPage() {
         gender: "male",
         background: ""
     });
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const { toast } = useToast();
+
+    const validateStep1 = () => {
+        const newErrors: { [key: string]: string } = {};
+        if (!formData.name.trim()) {
+            newErrors.name = "Full Name is required";
+        }
+        if (!formData.email.trim()) {
+            newErrors.email = "Email Address is required";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Please enter a valid email address";
+        }
+        if (!formData.phone.trim()) {
+            newErrors.phone = "Phone Number is required";
+        } else if (!/^\d{10}$/.test(formData.phone)) {
+            newErrors.phone = "Phone Number must be exactly 10 digits";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const nextStep = () => {
+        if (step === 1 && !validateStep1()) {
+            return;
+        }
+        setStep(s => Math.min(s + 1, 3));
+    };
+    const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (step === 1 && !validateStep1()) {
+            return;
+        }
+
         setLoading(true);
 
         try {
@@ -89,9 +129,6 @@ export default function RegisterPage() {
             setLoading(false);
         }
     };
-
-    const nextStep = () => setStep(s => Math.min(s + 1, 3));
-    const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
     if (success) {
         return (
@@ -213,41 +250,73 @@ export default function RegisterPage() {
                                             <p className="text-muted-foreground text-sm">Tell us who you are so we can personalize your journey.</p>
                                         </div>
                                         <div className="grid sm:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <Label className="text-[10px] uppercase font-bold text-muted-foreground">Full Name*</Label>
+                                            <div className="relative group">
                                                 <Input
+                                                    id="name"
                                                     name="name"
-                                                    placeholder="John Doe"
+                                                    placeholder=" "
                                                     required
                                                     value={formData.name}
-                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                    className="rounded-xl h-12 bg-muted/30 border-none focus:ring-2 focus:ring-primary/20"
+                                                    onChange={(e) => {
+                                                        setFormData({ ...formData, name: e.target.value })
+                                                        if (errors.name) setErrors({ ...errors, name: "" })
+                                                    }}
+                                                    className={`peer rounded-xl h-14 bg-muted/30 border-2 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-transparent focus:border-primary/50'} focus:bg-background focus:ring-0 transition-all pt-5 pb-1 px-4 shadow-sm`}
                                                 />
+                                                <Label
+                                                    htmlFor="name"
+                                                    className={`absolute left-4 top-1.5 text-[10px] uppercase font-bold text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:normal-case peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:font-bold ${errors.name ? 'peer-focus:text-red-500' : 'peer-focus:text-primary'} peer-focus:uppercase pointer-events-none`}
+                                                >
+                                                    Full Name*
+                                                </Label>
+                                                {errors.name && <span className="text-red-500 text-xs mt-1 absolute -bottom-5 left-2">{errors.name}</span>}
                                             </div>
-                                            <div className="space-y-2">
-                                                <Label className="text-[10px] uppercase font-bold text-muted-foreground">Email Address*</Label>
+                                            <div className="relative group">
                                                 <Input
+                                                    id="email"
                                                     name="email"
                                                     type="email"
-                                                    placeholder="john@example.com"
+                                                    placeholder=" "
                                                     required
                                                     value={formData.email}
-                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="rounded-xl h-12 bg-muted/30 border-none focus:ring-2 focus:ring-primary/20"
+                                                    onChange={(e) => {
+                                                        setFormData({ ...formData, email: e.target.value })
+                                                        if (errors.email) setErrors({ ...errors, email: "" })
+                                                    }}
+                                                    className={`peer rounded-xl h-14 bg-muted/30 border-2 ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-transparent focus:border-primary/50'} focus:bg-background focus:ring-0 transition-all pt-5 pb-1 px-4 shadow-sm`}
                                                 />
+                                                <Label
+                                                    htmlFor="email"
+                                                    className={`absolute left-4 top-1.5 text-[10px] uppercase font-bold text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:normal-case peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:font-bold ${errors.email ? 'peer-focus:text-red-500' : 'peer-focus:text-primary'} peer-focus:uppercase pointer-events-none`}
+                                                >
+                                                    Email Address*
+                                                </Label>
+                                                {errors.email && <span className="text-red-500 text-xs mt-1 absolute -bottom-5 left-2">{errors.email}</span>}
                                             </div>
                                         </div>
-                                        <div className="space-y-2">
-                                            <Label className="text-[10px] uppercase font-bold text-muted-foreground">Phone Number*</Label>
+                                        <div className="relative group mb-6">
                                             <Input
+                                                id="phone"
                                                 name="phone"
                                                 type="tel"
-                                                placeholder="+91 98765 43210"
+                                                placeholder=" "
+                                                maxLength={10}
                                                 required
                                                 value={formData.phone}
-                                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                                className="rounded-xl h-12 bg-muted/30 border-none focus:ring-2 focus:ring-primary/20"
+                                                onChange={(e) => {
+                                                    const val = e.target.value.replace(/\D/g, ''); // only allow digits
+                                                    setFormData({ ...formData, phone: val })
+                                                    if (errors.phone && val.length === 10) setErrors({ ...errors, phone: "" })
+                                                }}
+                                                className={`peer rounded-xl h-14 bg-muted/30 border-2 ${errors.phone ? 'border-red-500 focus:border-red-500' : 'border-transparent focus:border-primary/50'} focus:bg-background focus:ring-0 transition-all pt-5 pb-1 px-4 shadow-sm`}
                                             />
+                                            <Label
+                                                htmlFor="phone"
+                                                className={`absolute left-4 top-1.5 text-[10px] uppercase font-bold text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:normal-case peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:font-bold ${errors.phone ? 'peer-focus:text-red-500' : 'peer-focus:text-primary'} peer-focus:uppercase pointer-events-none`}
+                                            >
+                                                Phone Number*
+                                            </Label>
+                                            {errors.phone && <span className="text-red-500 text-xs mt-1 absolute -bottom-5 left-2">{errors.phone}</span>}
                                         </div>
                                         <Button type="button" onClick={nextStep} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
                                             Continue to Program
@@ -365,15 +434,38 @@ export default function RegisterPage() {
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-2">
-                                                <Label className="text-[10px] uppercase font-bold text-muted-foreground">Background (Optional)</Label>
+                                            <div className="relative group">
                                                 <Textarea
+                                                    id="background"
                                                     name="background"
-                                                    placeholder="Share your goals or past experience..."
+                                                    placeholder=" "
                                                     value={formData.background}
-                                                    onChange={(e) => setFormData({ ...formData, background: e.target.value })}
-                                                    className="rounded-xl min-h-[100px] bg-muted/30 border-none focus:ring-2 focus:ring-primary/20 text-sm"
+                                                    onChange={(e) => {
+                                                        const text = e.target.value;
+                                                        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                                                        if (words <= 100 || text.length < formData.background.length) {
+                                                            setFormData({ ...formData, background: text });
+                                                        }
+                                                    }}
+                                                    className="peer rounded-xl min-h-[120px] bg-muted/30 border-2 border-transparent focus:border-primary/50 focus:bg-background focus:ring-0 transition-all pt-6 px-4 pb-8 shadow-sm text-sm resize-none"
                                                 />
+                                                <Label
+                                                    htmlFor="background"
+                                                    className="absolute left-4 top-2 text-[10px] uppercase font-bold text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:normal-case peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-bold peer-focus:text-primary peer-focus:uppercase pointer-events-none"
+                                                >
+                                                    Background (Optional)
+                                                </Label>
+                                                {(() => {
+                                                    const words = formData.background.trim() ? formData.background.trim().split(/\s+/).length : 0;
+                                                    const remaining = 100 - words;
+                                                    return (
+                                                        <div className="absolute bottom-2 right-4 pointer-events-none">
+                                                            <span className={`text-[10px] uppercase font-bold tracking-wider ${remaining <= 10 ? 'text-red-500' : 'text-muted-foreground/60'}`}>
+                                                                {remaining} words remaining
+                                                            </span>
+                                                        </div>
+                                                    );
+                                                })()}
                                             </div>
                                         </div>
 

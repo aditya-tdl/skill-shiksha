@@ -89,7 +89,7 @@ const Testimonials = () => {
                     ))}
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center font-black text-lg shadow-inner ring-2 ring-primary/20">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/60 text-white flex items-center justify-center font-black text-lg shadow-inner ring-2 ring-primary/20">
                       {t.avatar}
                     </div>
                     <div>
