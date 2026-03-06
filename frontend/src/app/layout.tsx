@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -28,21 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17997259530"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'AW-17997259530');
-            `,
-          }}
-        />
-      </head>
       <body
         className={`${outfit.variable} ${outfit.className} antialiased`}
       >
@@ -52,6 +38,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* Google tag (gtag.js) */}
+          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=AW-17997259530" />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-17997259530');
+            `}
+          </Script>
           <Navbar />
           {children}
           <Footer />
