@@ -4,7 +4,7 @@ import StudentFeedback from "@/components/StudentFeedback";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import FounderStory from "@/components/FounderStory";
 import InternshipPrograms from "@/components/InternshipPrograms";
-
+// Generating
 import OfficeGallery from "@/components/OfficeGallery";
 import ProjectsShowcase from "@/components/ProjectsShowcase";
 import MentorSection from "@/components/MentorSection";
