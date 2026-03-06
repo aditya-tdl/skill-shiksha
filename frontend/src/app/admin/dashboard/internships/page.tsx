@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Search, Eye, Trash2, Plus, Edit, Briefcase } from "lucide-react";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
 import { GlobalLoader } from "@/components/ui/global-loader";
-import { AddInternshipModal } from "@/components/admin/AddInternshipModal";
+import AddInternshipModal from "@/components/admin/AddInternshipModal";
 
 type Internship = {
     _id: string;
@@ -242,7 +242,22 @@ export default function InternshipManagementPage() {
             <AddInternshipModal
                 isOpen={isAddModalOpen}
                 onClose={() => setIsAddModalOpen(false)}
-                onSuccess={() => {
+                onAdd={async (internshipData) => {
+                    const token = localStorage.getItem("adminToken");
+                    const res = await fetch("http://localhost:5000/api/internships", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify(internshipData)
+                    });
+
+                    if (!res.ok) {
+                        const errorData = await res.json().catch(() => ({}));
+                        throw new Error(errorData.message || "Failed to add internship");
+                    }
+
                     fetchInternships();
                 }}
             />
