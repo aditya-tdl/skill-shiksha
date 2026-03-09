@@ -138,7 +138,7 @@ const AnimatedHeroSection = () => {
                         </Button>
                     </Link>
                     <Link href="/programs" className="w-full sm:w-auto">
-                        <Button size="lg" variant="outline" className="w-full px-10 py-6 rounded-xl border border-border bg-background/50 hover:bg-accent/10 text-foreground text-lg font-bold transition-all backdrop-blur-sm">
+                        <Button size="lg" variant="outline" className="w-full px-10 py-6 rounded-xl border border-border bg-background/50 hover:bg-accent hover:text-accent-foreground text-foreground text-lg font-bold transition-all backdrop-blur-sm">
                             View Curriculum
                         </Button>
                     </Link>

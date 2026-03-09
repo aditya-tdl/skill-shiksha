@@ -19,16 +19,16 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <AnimatedHeroSection />
       {/* <HeroSection /> */}
-      <StudentFeedback />
+      {/* <StudentFeedback /> */}
       <WhyChooseUs />
       <CareerQuiz />
       <InternshipPrograms />
       <ProjectsShowcase />
-      <MentorSection />
+      {/* <MentorSection /> */}
       <PlacementPartners />
       <Testimonials />
-      <FounderStory />
-      <OfficeGallery />
+      {/* <FounderStory /> */}
+      {/* <OfficeGallery /> */}
       <CTASection />
     </main>
   );

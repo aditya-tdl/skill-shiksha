@@ -24,6 +24,8 @@ export default function TestimonialManagementPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
     // Modals state
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -50,6 +52,11 @@ export default function TestimonialManagementPage() {
     useEffect(() => {
         fetchTestimonials();
     }, []);
+
+    // Reset pagination when searching
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm]);
 
     const handleEditClick = (testimonial: Testimonial) => {
         setTestimonialToEdit(testimonial);
@@ -88,6 +95,12 @@ export default function TestimonialManagementPage() {
         testimonial.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         testimonial.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
         testimonial.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const totalPages = Math.ceil(filteredTestimonials.length / itemsPerPage);
+    const paginatedTestimonials = filteredTestimonials.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
     );
 
     return (
@@ -165,7 +178,7 @@ export default function TestimonialManagementPage() {
                                     </td>
                                 </tr>
                             ) : (
-                                filteredTestimonials.map((testimonial) => (
+                                paginatedTestimonials.map((testimonial) => (
                                     <tr key={testimonial._id} className="hover:bg-muted/50 transition-colors">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
@@ -216,6 +229,31 @@ export default function TestimonialManagementPage() {
                             )}
                         </tbody>
                     </table>
+
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                        <div className="flex items-center justify-between px-6 py-3 border-t border-border bg-muted/20">
+                            <div className="text-sm text-muted-foreground">
+                                Showing <span className="font-medium">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-medium">{Math.min(currentPage * itemsPerPage, filteredTestimonials.length)}</span> of <span className="font-medium">{filteredTestimonials.length}</span> results
+                            </div>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                    disabled={currentPage === 1}
+                                    className="px-3 py-1 bg-background border border-border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors"
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                    disabled={currentPage === totalPages}
+                                    className="px-3 py-1 bg-background border border-border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -27,6 +27,8 @@ export default function InternshipManagementPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
     // Modals state
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -51,6 +53,11 @@ export default function InternshipManagementPage() {
     useEffect(() => {
         fetchInternships();
     }, []);
+
+    // Reset pagination when searching
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm]);
 
     const handleDeleteClick = (internship: Internship) => {
         setInternshipToDelete(internship);
@@ -88,6 +95,12 @@ export default function InternshipManagementPage() {
     const filteredInternships = internships.filter(internship =>
         internship.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (internship.badge && internship.badge.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
+    const totalPages = Math.ceil(filteredInternships.length / itemsPerPage);
+    const paginatedInternships = filteredInternships.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
     );
 
     return (
@@ -168,7 +181,7 @@ export default function InternshipManagementPage() {
                                     </td>
                                 </tr>
                             ) : (
-                                filteredInternships.map((internship) => (
+                                paginatedInternships.map((internship) => (
                                     <tr key={internship._id} className="hover:bg-muted/50 transition-colors">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
@@ -226,6 +239,31 @@ export default function InternshipManagementPage() {
                             )}
                         </tbody>
                     </table>
+
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                        <div className="flex items-center justify-between px-6 py-3 border-t border-border bg-muted/20">
+                            <div className="text-sm text-muted-foreground">
+                                Showing <span className="font-medium">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-medium">{Math.min(currentPage * itemsPerPage, filteredInternships.length)}</span> of <span className="font-medium">{filteredInternships.length}</span> results
+                            </div>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                    disabled={currentPage === 1}
+                                    className="px-3 py-1 bg-background border border-border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors"
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                    disabled={currentPage === totalPages}
+                                    className="px-3 py-1 bg-background border border-border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
