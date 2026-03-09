@@ -219,6 +219,58 @@ const courseData = {
             career: "Internship / Junior Flutter Developer"
         }
     },
+    devops: {
+        title: "Cloud & DevOps Engineer",
+        description: "A comprehensive 12-week program focused on cloud infrastructure, CI/CD pipelines, containerization, and modern deployment strategies.",
+        overview: [
+            { week: "Week 1", topic: "Linux & Shell Scripting" },
+            { week: "Week 2", topic: "Networking & Security" },
+            { week: "Week 3", topic: "Git & Version Control" },
+            { week: "Week 4", topic: "Docker & Containerization" },
+            { week: "Week 5", topic: "Kubernetes Basics" },
+            { week: "Week 6", topic: "AWS Cloud Fundamentals" },
+            { week: "Week 7", topic: "Infrastructure as Code (Terraform)" },
+            { week: "Week 8", topic: "CI/CD with Jenkins / GitHub Actions" },
+            { week: "Week 9", topic: "Monitoring & Logging" },
+            { week: "Week 10", topic: "Advanced Cloud Architecture" },
+            { week: "Week 11", topic: "Capstone Deployment" },
+            { week: "Week 12", topic: "Certifications & Interviews" },
+        ],
+        phases: [
+            {
+                title: "Phase 1: Systems & Containers (Weeks 1-4)",
+                weeks: [
+                    { week: 1, topics: "Linux fundamentals, bash scripting, file permissions, process management", output: "Shell Automation Scripts" },
+                    { week: 2, topics: "OSI Model, TCP/IP, DNS, SSH, SSL/TLS, Basic security principles", output: "Secure Server Setup" },
+                    { week: 3, topics: "Git branching strategies, feature workflows, Merge conflict resolution", output: "Collaborative Git Workflow" },
+                    { week: 4, topics: "Docker concepts, Dockerfiles, Docker Compose, Multi-stage builds", output: "Containerized Application" },
+                ]
+            },
+            {
+                title: "Phase 2: Cloud & Infrastructure (Weeks 5-8)",
+                weeks: [
+                    { week: 5, topics: "K8s architecture, Pods, Services, Deployments, ConfigMaps", output: "K8s Cluster Deployment" },
+                    { week: 6, topics: "AWS EC2, S3, RDS, VPC, IAM, Cloud architecture best practices", output: "AWS Cloud Infrastructure" },
+                    { week: 7, topics: "Terraform essentials, State management, Modules, Provider setup", output: "Automated Resourcing Pipeline" },
+                    { week: 8, topics: "Jenkins architecture, GitHub Actions, CI/CD pipeline creation, Automated testing", output: "End-to-End CI/CD Pipeline" },
+                ]
+            },
+            {
+                title: "Phase 3: Operations & Delivery (Weeks 9-12)",
+                weeks: [
+                    { week: 9, topics: "Prometheus, Grafana, ELK Stack, Alerting mechanisms, Log aggregation", output: "Observability Dashboard" },
+                    { week: 10, topics: "Load balancing, Auto-scaling, Serverless (AWS Lambda), Cost optimization", output: "Highly Available System" },
+                    { week: 11, topics: "Deploying a complex microservices application from scratch using automated tools", output: "Full Capstone Deployment" },
+                    { week: 12, topics: "AWS Certified Cloud Practitioner prep, Mock interviews, Resume building", output: "DevOps Portfolio" },
+                ]
+            }
+        ],
+        outcomes: {
+            certificate: "Cloud & DevOps Engineer",
+            portfolio: "Automated CI/CD Pipelines & Cloud Architecture",
+            career: "Junior DevOps Engineer / Cloud Administrator"
+        }
+    },
     manual_testing: {
         title: "Manual Quality Assurance Tester",
         description: "A comprehensive 12-week program focused on manual software testing, test case design, defect tracking, and QA methodologies.",
@@ -415,6 +467,7 @@ function ProgramsContent() {
                         <TabsTrigger value="nodejs" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Node.js</TabsTrigger>
                         <TabsTrigger value="react" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">React.js</TabsTrigger>
                         <TabsTrigger value="flutter" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Flutter</TabsTrigger>
+                        <TabsTrigger value="devops" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">DevOps</TabsTrigger>
                         <TabsTrigger value="manual_testing" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">QA Manual</TabsTrigger>
                         <TabsTrigger value="ui_ux" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">UI/UX Design</TabsTrigger>
                         <TabsTrigger value="project_manager" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Project Manager</TabsTrigger>
@@ -649,6 +702,31 @@ function ProgramsContent() {
                                                     <li className="flex items-start gap-3">
                                                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                                                         <p className="font-medium">e-Learning Platform</p>
+                                                    </li>
+                                                </>
+                                            )}
+                                            {key === 'devops' && (
+                                                <>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">Microservices Infrastructure deployment</p>
+                                                            <p className="text-sm text-muted-foreground">End to end pipeline with Kubernetes and AWS</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">High-Availability E-commerce deployment</p>
+                                                            <p className="text-sm text-muted-foreground">Auto-scaling, load balancing, and observability stack</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">Serverless Architecture Sandbox</p>
+                                                            <p className="text-sm text-muted-foreground">Deploying event-driven pipelines using AWS Lambda</p>
+                                                        </div>
                                                     </li>
                                                 </>
                                             )}
