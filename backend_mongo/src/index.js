@@ -14,8 +14,27 @@ import globalErrorHandler from './controllers/errorController.js';
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Configure Custom CORS
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://skillshiksha.ai',
+    'https://www.skillshiksha.ai'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (e.g., mobile apps, curl, Postman)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json());
 
 // Request logging middleware
