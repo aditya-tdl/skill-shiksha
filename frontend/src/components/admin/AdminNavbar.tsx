@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { User, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
+import Cookies from "js-cookie";
+import { toast } from "sonner";
 
 export function AdminNavbar() {
     const [adminData, setAdminData] = useState({ name: "Admin User", email: "admin@skillshiksha.com" });
@@ -26,8 +28,10 @@ export function AdminNavbar() {
     }, []);
 
     const handleLogout = () => {
+        Cookies.remove("adminToken");
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminData");
+        toast.info("You have successfully logged out");
         router.push("/admin/login");
     };
 

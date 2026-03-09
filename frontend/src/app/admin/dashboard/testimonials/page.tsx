@@ -1,46 +1,45 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Search, Eye, Trash2, Plus, Edit, Briefcase } from "lucide-react";
+import { Search, Trash2, Plus, Edit, MessageSquare, Star } from "lucide-react";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
 import { GlobalLoader } from "@/components/ui/global-loader";
-import AddInternshipModal from "@/components/admin/AddInternshipModal";
-import EditInternshipModal from "@/components/admin/EditInternshipModal";
+import AddTestimonialModal from "@/components/admin/AddTestimonialModal";
+import EditTestimonialModal from "@/components/admin/EditTestimonialModal";
 import { apiFetch } from "@/lib/api";
 import { toast } from "sonner";
 
-type Internship = {
+type Testimonial = {
     _id: string;
-    title: string;
-    description: string;
-    badge: string;
-    tags: string[];
-    duration: string;
-    totalSeats?: number;
-    seatsLeft: number;
-    price: number;
-    emiAvailable: boolean;
+    name: string;
+    role: string;
+    text: string;
+    rating: number;
+    avatar: string;
+    createdAt?: string;
 };
 
-export default function InternshipManagementPage() {
-    const [internships, setInternships] = useState<Internship[]>([]);
+export default function TestimonialManagementPage() {
+    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
 
     // Modals state
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [internshipToDelete, setInternshipToDelete] = useState<Internship | null>(null);
-    const [internshipToEdit, setInternshipToEdit] = useState<Internship | null>(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+    const [testimonialToEdit, setTestimonialToEdit] = useState<Testimonial | null>(null);
+    const [testimonialToDelete, setTestimonialToDelete] = useState<Testimonial | null>(null);
+
     const [isDeleting, setIsDeleting] = useState(false);
 
-    const fetchInternships = async () => {
+    const fetchTestimonials = async () => {
         try {
             setLoading(true);
-            const data = await apiFetch("/internships");
-            setInternships(data.data || []);
+            const data = await apiFetch("/testimonials");
+            setTestimonials(data.data || []);
         } catch (err: any) {
             setError(err.message);
         } finally {
@@ -49,53 +48,54 @@ export default function InternshipManagementPage() {
     };
 
     useEffect(() => {
-        fetchInternships();
+        fetchTestimonials();
     }, []);
 
-    const handleDeleteClick = (internship: Internship) => {
-        setInternshipToDelete(internship);
-        setIsDeleteModalOpen(true);
-    };
-
-    const handleEditClick = (internship: Internship) => {
-        setInternshipToEdit(internship);
+    const handleEditClick = (testimonial: Testimonial) => {
+        setTestimonialToEdit(testimonial);
         setIsEditModalOpen(true);
     };
 
+    const handleDeleteClick = (testimonial: Testimonial) => {
+        setTestimonialToDelete(testimonial);
+        setIsDeleteModalOpen(true);
+    };
+
     const confirmDelete = async () => {
-        if (!internshipToDelete) return;
+        if (!testimonialToDelete) return;
 
         setIsDeleting(true);
         try {
-            await apiFetch(`/internships/${internshipToDelete._id}`, {
+            await apiFetch(`/testimonials/${testimonialToDelete._id}`, {
                 method: "DELETE"
             });
 
-            // Update local state to remove the internship
-            setInternships(internships.filter(s => s._id !== internshipToDelete._id));
+            // Update local state
+            setTestimonials(testimonials.filter(t => t._id !== testimonialToDelete._id));
             setIsDeleteModalOpen(false);
-            setInternshipToDelete(null);
+            setTestimonialToDelete(null);
 
-            toast.success(`Program "${internshipToDelete.title}" has been deleted.`);
+            toast.success(`Testimonial by "${testimonialToDelete.name}" has been deleted.`);
         } catch (err: any) {
             console.error(err);
-            toast.error(err.message || "Failed to delete internship program");
+            toast.error(err.message || "Failed to delete testimonial");
         } finally {
             setIsDeleting(false);
         }
     };
 
-    const filteredInternships = internships.filter(internship =>
-        internship.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (internship.badge && internship.badge.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredTestimonials = testimonials.filter(testimonial =>
+        testimonial.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        testimonial.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        testimonial.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-foreground">Internship Programs</h1>
-                    <p className="mt-1 text-sm text-muted-foreground">Manage and add new internship courses</p>
+                    <h1 className="text-2xl font-bold text-foreground">Testimonials</h1>
+                    <p className="mt-1 text-sm text-muted-foreground">Manage student success stories and feedback</p>
                 </div>
 
                 <div className="flex gap-3 w-full sm:w-auto">
@@ -105,7 +105,7 @@ export default function InternshipManagementPage() {
                         </div>
                         <input
                             type="text"
-                            placeholder="Search internships..."
+                            placeholder="Search testimonials..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="block w-full pl-10 pr-3 py-2 border border-border rounded-lg leading-5 bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
@@ -115,7 +115,7 @@ export default function InternshipManagementPage() {
                         onClick={() => setIsAddModalOpen(true)}
                         className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap"
                     >
-                        <Plus className="h-4 w-4" /> Add Program
+                        <Plus className="h-4 w-4" /> Add Testimonial
                     </button>
                 </div>
             </div>
@@ -132,16 +132,13 @@ export default function InternshipManagementPage() {
                         <thead className="bg-muted/50">
                             <tr>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Program Title
+                                    Student
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Duration & Info
+                                    Feedback
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Price
-                                </th>
-                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Seats (Available / Total)
+                                    Rating
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     Actions
@@ -151,71 +148,64 @@ export default function InternshipManagementPage() {
                         <tbody className="bg-card divide-y divide-border">
                             {loading ? (
                                 <tr>
-                                    <td colSpan={5} className="px-6 py-8">
-                                        <GlobalLoader message="Loading internally..." />
+                                    <td colSpan={4} className="px-6 py-8">
+                                        <GlobalLoader message="Loading testimonials..." />
                                     </td>
                                 </tr>
-                            ) : filteredInternships.length === 0 ? (
+                            ) : filteredTestimonials.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className="px-6 py-12 text-center text-sm text-muted-foreground">
+                                    <td colSpan={4} className="px-6 py-12 text-center text-sm text-muted-foreground">
                                         <div className="flex flex-col items-center justify-center">
                                             <div className="h-12 w-12 rounded-full bg-secondary flex items-center justify-center mb-4">
-                                                <Briefcase className="h-6 w-6 text-muted-foreground" />
+                                                <MessageSquare className="h-6 w-6 text-muted-foreground" />
                                             </div>
-                                            <p className="text-base font-medium text-foreground">No internships found</p>
-                                            <p className="mt-1">Get started by adding a new internship program.</p>
+                                            <p className="text-base font-medium text-foreground">No testimonials found</p>
+                                            <p className="mt-1">Get started by adding a new student feedback.</p>
                                         </div>
                                     </td>
                                 </tr>
                             ) : (
-                                filteredInternships.map((internship) => (
-                                    <tr key={internship._id} className="hover:bg-muted/50 transition-colors">
+                                filteredTestimonials.map((testimonial) => (
+                                    <tr key={testimonial._id} className="hover:bg-muted/50 transition-colors">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
-                                                <div>
-                                                    <div className="text-sm font-medium text-foreground">{internship.title}</div>
-                                                    <div className="text-xs text-muted-foreground mt-1 flex gap-1 items-center">
-                                                        {internship.badge && (
-                                                            <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-[10px] font-bold">
-                                                                {internship.badge}
-                                                            </span>
-                                                        )}
-                                                        <span className="truncate max-w-[150px] inline-block" title={internship.tags.join(', ')}>
-                                                            {internship.tags.slice(0, 2).join(', ')}
-                                                            {internship.tags.length > 2 && '...'}
-                                                        </span>
-                                                    </div>
+                                                <div className="flex-shrink-0 h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">
+                                                    {testimonial.avatar}
+                                                </div>
+                                                <div className="ml-4">
+                                                    <div className="text-sm font-medium text-foreground">{testimonial.name}</div>
+                                                    <div className="text-xs text-muted-foreground">{testimonial.role}</div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-foreground">{internship.duration}</div>
+                                        <td className="px-6 py-4 max-w-xs lg:max-w-md">
+                                            <p className="text-sm text-foreground whitespace-normal break-words leading-relaxed text-left">
+                                                "{testimonial.text}"
+                                            </p>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm font-bold text-foreground">₹{internship.price.toLocaleString()}</div>
-                                            {internship.emiAvailable && (
-                                                <div className="text-[10px] text-muted-foreground">EMI Available</div>
-                                            )}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${internship.seatsLeft > 0 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
-                                                }`}>
-                                                {internship.seatsLeft} {internship.totalSeats ? `/ ${internship.totalSeats}` : ''}
-                                            </span>
+                                            <div className="flex text-yellow-500">
+                                                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                                                    <Star key={i} className="h-4 w-4 fill-current" />
+                                                ))}
+                                                {Array.from({ length: 5 - testimonial.rating }).map((_, i) => (
+                                                    <Star key={i} className="h-4 w-4 text-muted border-none text-muted-foreground opacity-20" />
+                                                ))}
+                                            </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div className="flex justify-end space-x-2">
                                                 <button
-                                                    onClick={() => handleEditClick(internship)}
+                                                    onClick={() => handleEditClick(testimonial)}
                                                     className="text-primary hover:text-primary/80 p-1.5 rounded-md hover:bg-primary/10 transition-colors"
-                                                    title="Edit Program"
+                                                    title="Edit Testimonial"
                                                 >
                                                     <Edit className="h-4 w-4" />
                                                 </button>
                                                 <button
-                                                    onClick={() => handleDeleteClick(internship)}
+                                                    onClick={() => handleDeleteClick(testimonial)}
                                                     className="text-destructive hover:text-destructive/80 p-1.5 rounded-md hover:bg-destructive/10 transition-colors"
-                                                    title="Delete Program"
+                                                    title="Delete Testimonial"
                                                 >
                                                     <Trash2 className="h-4 w-4" />
                                                 </button>
@@ -233,48 +223,48 @@ export default function InternshipManagementPage() {
                 isOpen={isDeleteModalOpen}
                 onClose={() => setIsDeleteModalOpen(false)}
                 onConfirm={confirmDelete}
-                title="Delete Program"
-                description={`Are you sure you want to delete the "${internshipToDelete?.title}" program? This action cannot be undone.`}
+                title="Delete Testimonial"
+                description={`Are you sure you want to delete the testimonial from "${testimonialToDelete?.name}"? This action cannot be undone.`}
                 confirmText="Delete"
                 cancelText="Cancel"
                 type="danger"
                 isLoading={isDeleting}
             />
 
-            <AddInternshipModal
+            <AddTestimonialModal
                 isOpen={isAddModalOpen}
                 onClose={() => setIsAddModalOpen(false)}
-                onAdd={async (internshipData) => {
+                onAdd={async (testimonialData) => {
                     try {
-                        await apiFetch("/internships", {
+                        await apiFetch("/testimonials", {
                             method: "POST",
-                            body: JSON.stringify(internshipData)
+                            body: JSON.stringify(testimonialData)
                         });
 
-                        toast.success("New program added successfully!");
-                        fetchInternships();
+                        toast.success("New testimonial added successfully!");
+                        fetchTestimonials();
                     } catch (err: any) {
-                        toast.error(err.message || "Failed to create program");
+                        toast.error(err.message || "Failed to create testimonial");
                         throw err;
                     }
                 }}
             />
 
-            <EditInternshipModal
+            <EditTestimonialModal
                 isOpen={isEditModalOpen}
                 onClose={() => setIsEditModalOpen(false)}
-                internship={internshipToEdit}
-                onEdit={async (id, internshipData) => {
+                testimonial={testimonialToEdit}
+                onEdit={async (id, testimonialData) => {
                     try {
-                        await apiFetch(`/internships/${id}`, {
+                        await apiFetch(`/testimonials/${id}`, {
                             method: "PUT",
-                            body: JSON.stringify(internshipData)
+                            body: JSON.stringify(testimonialData)
                         });
 
-                        toast.success("Program updated successfully!");
-                        fetchInternships();
+                        toast.success("Testimonial updated successfully!");
+                        fetchTestimonials();
                     } catch (err: any) {
-                        toast.error(err.message || "Failed to update program");
+                        toast.error(err.message || "Failed to update testimonial");
                         throw err;
                     }
                 }}

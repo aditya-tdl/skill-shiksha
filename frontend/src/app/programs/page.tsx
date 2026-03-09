@@ -218,6 +218,162 @@ const courseData = {
             portfolio: "GitHub with live projects",
             career: "Internship / Junior Flutter Developer"
         }
+    },
+    manual_testing: {
+        title: "Manual Quality Assurance Tester",
+        description: "A comprehensive 12-week program focused on manual software testing, test case design, defect tracking, and QA methodologies.",
+        overview: [
+            { week: "Week 1", topic: "Software Testing Basics" },
+            { week: "Week 2", topic: "SDLC & STLC" },
+            { week: "Week 3", topic: "Test Scenarios & Cases" },
+            { week: "Week 4", topic: "Test Execution & Jira" },
+            { week: "Week 5", topic: "Agile & Scrum QA" },
+            { week: "Week 6", topic: "API Testing (Postman)" },
+            { week: "Week 7", topic: "Web & Mobile App Testing" },
+            { week: "Week 8", topic: "SQL Basics for QA" },
+            { week: "Week 9", topic: "Defect Life Cycle" },
+            { week: "Week 10", topic: "Performance & Security QA" },
+            { week: "Week 11", topic: "Live Project Testing" },
+            { week: "Week 12", topic: "QA Interviews & Resume" },
+        ],
+        phases: [
+            {
+                title: "Phase 1: QA Fundamentals & Test Design (Weeks 1-4)",
+                weeks: [
+                    { week: 1, topics: "Fundmentals of Software Testing, Types of Testing, Verification vs Validation", output: "Testing Concept Models" },
+                    { week: 2, topics: "Software Development Life Cycle (SDLC) & Software Testing Life Cycle (STLC), Agile concept", output: "SDLC & STLC Flow design" },
+                    { week: 3, topics: "Writing Test Scenarios, Test Case documentation, Test data preparation, Equivalence Partitioning", output: "Test Case Document" },
+                    { week: 4, topics: "Test Execution, Jira Tool introduction, Defect tracking basics, Bug reporting", output: "Jira Dashboard setup" },
+                ]
+            },
+            {
+                title: "Phase 2: Specialized Testing & Tools (Weeks 5-8)",
+                weeks: [
+                    { week: 5, topics: "Agile Methodology, Scrum framework, Sprint Planning from QA perspective, User Stories", output: "Agile Test Plan" },
+                    { week: 6, topics: "API basics, JSON/XML, Manual API Testing using Postman, Status codes validation", output: "Postman Collections" },
+                    { week: 7, topics: "Web vs Mobile App testing challenges, Cross-browser testing, Responsive testing tools", output: "Responsive Testing Report" },
+                    { week: 8, topics: "Relational Database concepts, Basic SQL Queries, Data validation testing", output: "SQL Validation Queries" },
+                ]
+            },
+            {
+                title: "Phase 3: QA Lifecycle & Real-World Projects (Weeks 9-12)",
+                weeks: [
+                    { week: 9, topics: "Defect Life Cycle in-depth, Root Cause Analysis, Severity vs Priority, Bug Triage meetings", output: "Defect Report" },
+                    { week: 10, topics: "Introduction to Non-Functional Testing, Performance Testing basics, Security Testing awareness", output: "Performance Metrics Doc" },
+                    { week: 11, topics: "Live implementation: Testing an E-commerce or Healthcare application end-to-end", output: "End-to-End Test Report" },
+                    { week: 12, topics: "Test summary reports, QA process refinement, Resume building, Mock interviews", output: "Final QA Portfolio" },
+                ]
+            }
+        ],
+        outcomes: {
+            certificate: "QA Manual Tester",
+            portfolio: "Jira Boards, Test Suites, Bug Reports",
+            career: "QA Analyst / Junior Software Tester"
+        }
+    },
+    ui_ux: {
+        title: "UI/UX Designer",
+        description: "An intensive 12-week design boot-camp teaching user research, wireframing, prototyping, and modern interface design using Figma.",
+        overview: [
+            { week: "Week 1", topic: "Design Principles" },
+            { week: "Week 2", topic: "User Research" },
+            { week: "Week 3", topic: "Information Architecture" },
+            { week: "Week 4", topic: "Wireframing" },
+            { week: "Week 5", topic: "Figma Fundamentals" },
+            { week: "Week 6", topic: "UI Design & Typography" },
+            { week: "Week 7", topic: "Design Systems" },
+            { week: "Week 8", topic: "High-Fidelity Prototyping" },
+            { week: "Week 9", topic: "Usability Testing" },
+            { week: "Week 10", topic: "Web vs Mobile UX" },
+            { week: "Week 11", topic: "Portfolio Development" },
+            { week: "Week 12", topic: "Case Study Presentation" },
+        ],
+        phases: [
+            {
+                title: "Phase 1: UX Foundations & Strategy (Weeks 1-4)",
+                weeks: [
+                    { week: 1, topics: "Intro to UI vs UX, Gestalt Principles, Color theory, Typography basics", output: "Visual Design Exercises" },
+                    { week: 2, topics: "UX Research methods, User Interviews, Creating User Personas, Empathy Mapping", output: "User Persona Document" },
+                    { week: 3, topics: "User Journeys, User Flows, Information Architecture, Card Sorting", output: "Sitemap & User Flow Diagram" },
+                    { week: 4, topics: "Ideation, Sketching, Low-fidelity wireframing, Paper prototypes", output: "Low-Fi Wireframes" },
+                ]
+            },
+            {
+                title: "Phase 2: UI Design & Prototyping (Weeks 5-8)",
+                weeks: [
+                    { week: 5, topics: "Figma masterclass, Workspace, Tools, Frames, Constraints, Auto-layout", output: "Figma Replicas" },
+                    { week: 6, topics: "Visual Hierarchy, Micro-interactions, Accessibility (A11y) in UI, Spacing rules", output: "High-Fi Screen Designs" },
+                    { week: 7, topics: "Component libraries, Variants, Figma Tokens, Building a small Design System", output: "Mini Design System" },
+                    { week: 8, topics: "Interactive Prototyping, Smart Animate, Page transitions, Designing for states", output: "Interactive Prototype" },
+                ]
+            },
+            {
+                title: "Phase 3: Validation & Portfolio (Weeks 9-12)",
+                weeks: [
+                    { week: 9, topics: "Usability Testing methods, A/B Testing, Heuristic Evaluation, Feedback synthesis", output: "Usability Test Report" },
+                    { week: 10, topics: "Platform guidelines (Material Design vs Guidelines), Responsive layout design", output: "Cross-platform Designs" },
+                    { week: 11, topics: "Building a portfolio, Writing UX Case Studies, Presenting design decisions", output: "Behance/Notion Portfolio" },
+                    { week: 12, topics: "Final capstone project design iteration, Mock design interviews, Design handoff to devs", output: "Final Case Study Portfolio" },
+                ]
+            }
+        ],
+        outcomes: {
+            certificate: "UI/UX Designer",
+            portfolio: "Figma Prototypes & 2 Case Studies",
+            career: "Junior UI/UX Designer / Product Designer"
+        }
+    },
+    project_manager: {
+        title: "IT Project Manager",
+        description: "A 12-week program on managing software projects, Agile/Scrum methodologies, team coordination, and project delivery.",
+        overview: [
+            { week: "Week 1", topic: "Project Management Basics" },
+            { week: "Week 2", topic: "SDLC & PM Frameworks" },
+            { week: "Week 3", topic: "Agile & Scrum Deep Dive" },
+            { week: "Week 4", topic: "Jira & Confluence Core" },
+            { week: "Week 5", topic: "Requirement Gathering" },
+            { week: "Week 6", topic: "Timeline & Estimation" },
+            { week: "Week 7", topic: "Risk Management" },
+            { week: "Week 8", topic: "Stakeholder Comms" },
+            { week: "Week 9", topic: "Sprint Execution" },
+            { week: "Week 10", topic: "Quality & Metrics" },
+            { week: "Week 11", topic: "Capstone Sandbox" },
+            { week: "Week 12", topic: "Certifications Prep" },
+        ],
+        phases: [
+            {
+                title: "Phase 1: PM Fundamentals & Agile (Weeks 1-4)",
+                weeks: [
+                    { week: 1, topics: "Role of a Tech PM, Triple Constraint, Waterfall vs Agile, Project Life Cycle", output: "Project Charter Document" },
+                    { week: 2, topics: "Software Development Life Cycle (SDLC) for PMs, Methodologies comparison", output: "Methodology Selection Matrix" },
+                    { week: 3, topics: "Scrum framework, Roles (PO, SM, Dev), Ceremonies, Artifacts, Kanban boards", output: "Scrum Ceremony Plan" },
+                    { week: 4, topics: "Atlassian Suite: Jira (Epics, Stories, Tasks), Confluence setup, Boards configuration", output: "Jira Project Setup" },
+                ]
+            },
+            {
+                title: "Phase 2: Planning & Execution (Weeks 5-8)",
+                weeks: [
+                    { week: 5, topics: "Requirement engineering, Writing PRDs (Product Requirement Docs), Acceptance Criteria", output: "PRD & Backlog Creation" },
+                    { week: 6, topics: "Story Point estimation, Planning Poker, Velocity tracking, Gantt charts, Roadmapping", output: "Project Roadmap & Schedule" },
+                    { week: 7, topics: "Identifying project risks, Risk registry, Mitigation strategies, Issue management", output: "Risk Management Plan" },
+                    { week: 8, topics: "Communication plans, Status reporting, Managing client expectations, Conflict resolution", output: "Status Report Template" },
+                ]
+            },
+            {
+                title: "Phase 3: Delivery & Leadership (Weeks 9-12)",
+                weeks: [
+                    { week: 9, topics: "Running Sprints, Backlog grooming, Removing blockers, Handling scope requirements", output: "Sprint Backlog Refinement" },
+                    { week: 10, topics: "Tracking PM metrics (Burndown charts, Cycle time), Delivery quality, Post-mortems", output: "Sprint Retrospective Report" },
+                    { week: 11, topics: "Simulated software delivery lifecycle: Managing a mock project from ideation to delivery", output: "Capstone PM Delivery" },
+                    { week: 12, topics: "Scrum Master / PMP certification overview, Interview prep for PM roles, Leadership skills", output: "Interview Ready Profile" },
+                ]
+            }
+        ],
+        outcomes: {
+            certificate: "IT Project Manager / Scrum Master",
+            portfolio: "Jira Roadmaps, PRDs, Project Plans",
+            career: "Junior Project Manager / Associate Scrum Master"
+        }
     }
 };
 
@@ -254,11 +410,14 @@ function ProgramsContent() {
 
                 {/* Course Tabs */}
                 <Tabs defaultValue={defaultTab} className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl mb-12">
-                        <TabsTrigger value="mern" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">MERN Stack</TabsTrigger>
-                        <TabsTrigger value="nodejs" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">Node.js Backend</TabsTrigger>
-                        <TabsTrigger value="react" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">React.js Frontend</TabsTrigger>
-                        <TabsTrigger value="flutter" className="py-3 rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg">Flutter</TabsTrigger>
+                    <TabsList className="flex flex-wrap items-center justify-center w-full h-auto p-1.5 bg-muted/50 backdrop-blur-sm rounded-xl mb-12 gap-1 md:gap-2">
+                        <TabsTrigger value="mern" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">MERN Stack</TabsTrigger>
+                        <TabsTrigger value="nodejs" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Node.js</TabsTrigger>
+                        <TabsTrigger value="react" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">React.js</TabsTrigger>
+                        <TabsTrigger value="flutter" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Flutter</TabsTrigger>
+                        <TabsTrigger value="manual_testing" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">QA Manual</TabsTrigger>
+                        <TabsTrigger value="ui_ux" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">UI/UX Design</TabsTrigger>
+                        <TabsTrigger value="project_manager" className="flex-1 min-w-[120px] max-w-[180px] py-2 md:py-3 text-xs md:text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-lg whitespace-nowrap">Project Manager</TabsTrigger>
                     </TabsList>
 
                     {Object.entries(courseData).map(([key, course]) => (
@@ -490,6 +649,81 @@ function ProgramsContent() {
                                                     <li className="flex items-start gap-3">
                                                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                                                         <p className="font-medium">e-Learning Platform</p>
+                                                    </li>
+                                                </>
+                                            )}
+                                            {key === 'manual_testing' && (
+                                                <>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">E-commerce End-to-End Testing</p>
+                                                            <p className="text-sm text-muted-foreground">Comprehensive test suite for shopping flows</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">Healthcare App QA Sandbox</p>
+                                                            <p className="text-sm text-muted-foreground">Compliance and security validation testing</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">FinTech API Testing Toolkit</p>
+                                                            <p className="text-sm text-muted-foreground">Postman suites for financial APIs</p>
+                                                        </div>
+                                                    </li>
+                                                </>
+                                            )}
+                                            {key === 'ui_ux' && (
+                                                <>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">FinTech App Redesign</p>
+                                                            <p className="text-sm text-muted-foreground">UX modernization for a banking application</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">On-Demand Delivery App</p>
+                                                            <p className="text-sm text-muted-foreground">Consumer & Delivery driver interfaces</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">Enterprise SaaS Dashboard</p>
+                                                            <p className="text-sm text-muted-foreground">Complex data visualization & controls</p>
+                                                        </div>
+                                                    </li>
+                                                </>
+                                            )}
+                                            {key === 'project_manager' && (
+                                                <>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">EdTech Delivery Operations Plan</p>
+                                                            <p className="text-sm text-muted-foreground">End-to-end launch of an education platform</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">Marketplace App Launch Strategy</p>
+                                                            <p className="text-sm text-muted-foreground">Scrum rollout for a multi-vendor store</p>
+                                                        </div>
+                                                    </li>
+                                                    <li className="flex items-start gap-3">
+                                                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                        <div>
+                                                            <p className="font-medium">SaaS Integration Agile Delivery</p>
+                                                            <p className="text-sm text-muted-foreground">Managing 3rd party API integration sprints</p>
+                                                        </div>
                                                     </li>
                                                 </>
                                             )}

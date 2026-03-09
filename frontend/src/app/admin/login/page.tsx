@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
+import Cookies from "js-cookie";
+import { toast } from "sonner";
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState("");
@@ -30,14 +32,19 @@ export default function AdminLoginPage() {
                 throw new Error(data.message || "Login failed");
             }
 
-            // Save token and admin info
-            localStorage.setItem("adminToken", data.token);
+            // Save token in cookie properly for Next.js SSR middleware
+            Cookies.set("adminToken", data.token, { expires: 30 }); // 30 days
+
+            // We can still optionally save non-sensitive UI data in localStorage if needed for immediate display
             localStorage.setItem("adminData", JSON.stringify({ name: data.name, email: data.email, role: data.role }));
+
+            toast.success("Login successful! Welcome back.");
 
             // Redirect to dashboard
             router.push("/admin/dashboard");
         } catch (err: any) {
             setError(err.message);
+            toast.error(err.message || "Failed to sign in");
         } finally {
             setLoading(false);
         }

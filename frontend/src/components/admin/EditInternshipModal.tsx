@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { X, Search } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
 
-interface AddInternshipModalProps {
+interface EditInternshipModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onAdd: (internship: any) => Promise<void>;
+    onEdit: (id: string, internship: any) => Promise<void>;
+    internship: any | null;
 }
 
-export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddInternshipModalProps) {
+export default function EditInternshipModal({ isOpen, onClose, onEdit, internship }: EditInternshipModalProps) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [badge, setBadge] = useState("");
@@ -22,7 +23,21 @@ export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddIntern
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    if (!isOpen) return null;
+    // Populate form when internship changes
+    useEffect(() => {
+        if (internship) {
+            setTitle(internship.title || "");
+            setDescription(internship.description || "");
+            setBadge(internship.badge || "");
+            setTagsInput(internship.tags ? internship.tags.join(', ') : "");
+            setDuration(internship.duration || "");
+            setTotalSeats(internship.totalSeats || "");
+            setPrice(internship.price ?? "");
+            setEmiAvailable(internship.emiAvailable || false);
+        }
+    }, [internship]);
+
+    if (!isOpen || !internship) return null;
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -56,32 +71,23 @@ export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddIntern
                 return;
             }
 
-            await onAdd({
+            await onEdit(internship._id, {
                 title,
                 description,
                 badge: badge || "",
                 tags,
                 duration,
                 totalSeats: Number(totalSeats),
-                seatsLeft: Number(totalSeats), // Initial seats left is total seats
                 price: Number(price),
                 emiAvailable,
+                // Note: seatsLeft might need to be adjusted if totalSeats decreases, 
+                // but let's leave it to the backend or maintain current ratio
             });
-
-            // Reset form
-            setTitle("");
-            setDescription("");
-            setBadge("");
-            setTagsInput("");
-            setDuration("");
-            setTotalSeats("");
-            setPrice("");
-            setEmiAvailable(false);
 
             onClose();
         } catch (err: any) {
             console.error(err);
-            setError(err.response?.data?.message || err.message || "Failed to add internship.");
+            setError(err.response?.data?.message || err.message || "Failed to edit internship.");
         } finally {
             setIsSubmitting(false);
         }
@@ -93,7 +99,7 @@ export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddIntern
                 {/* Header - Fixed */}
                 <div className="flex items-center justify-between p-5 border-b border-border bg-card shrink-0 rounded-t-xl">
                     <h2 className="text-xl font-bold text-primary">
-                        Add New Program
+                        Edit Program
                     </h2>
                     <button
                         onClick={onClose}
@@ -195,12 +201,12 @@ export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddIntern
                         <div className="md:col-span-2 flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                id="emiAvailable"
+                                id="editEmiAvailable"
                                 checked={emiAvailable}
                                 onChange={(e) => setEmiAvailable(e.target.checked)}
                                 className="w-4 h-4 rounded border-border text-primary focus:ring-primary/50"
                             />
-                            <label htmlFor="emiAvailable" className="text-sm font-medium text-foreground">
+                            <label htmlFor="editEmiAvailable" className="text-sm font-medium text-foreground">
                                 EMI Available for this course
                             </label>
                         </div>
@@ -222,7 +228,7 @@ export default function AddInternshipModal({ isOpen, onClose, onAdd }: AddIntern
                         disabled={isSubmitting}
                         className="px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors disabled:opacity-50 flex items-center gap-2"
                     >
-                        {isSubmitting ? 'Adding...' : 'Add Program'}
+                        {isSubmitting ? 'Saving...' : 'Save Changes'}
                     </button>
                 </div>
             </form>

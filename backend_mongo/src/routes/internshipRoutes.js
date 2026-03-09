@@ -6,14 +6,14 @@ import {
     updateInternship,
     deleteInternship
 } from '../controllers/internshipController.js';
+import { protect, admin } from '../utils/authMiddleware.js';
 
 const router = express.Router();
 
-// Currently keeping all routes public/open as per the admissionRoutes structure
-router.post('/', createInternship);
+router.post('/', protect, admin, createInternship);
 router.get('/', getInternships);
 router.get('/:id', getInternship);
-router.put('/:id', updateInternship);
-router.delete('/:id', deleteInternship);
+router.put('/:id', protect, admin, updateInternship);
+router.delete('/:id', protect, admin, deleteInternship);
 
 export default router;

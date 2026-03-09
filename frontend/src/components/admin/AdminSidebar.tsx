@@ -4,9 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, LogOut, Settings, Briefcase } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, Settings, Briefcase, MessageSquare } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
+import Cookies from "js-cookie";
+import { toast } from "sonner";
 
 export function AdminSidebar() {
     const pathname = usePathname();
@@ -14,8 +16,10 @@ export function AdminSidebar() {
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
     const handleLogout = () => {
+        Cookies.remove("adminToken");
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminData");
+        toast.info("You have successfully logged out");
         router.push("/admin/login");
     };
 
@@ -23,6 +27,7 @@ export function AdminSidebar() {
         { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
         { name: "Students", href: "/admin/dashboard/students", icon: Users },
         { name: "Internships", href: "/admin/dashboard/internships", icon: Briefcase },
+        { name: "Testimonials", href: "/admin/dashboard/testimonials", icon: MessageSquare },
     ];
 
     return (

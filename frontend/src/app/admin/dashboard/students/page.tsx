@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Search, Eye, Trash2 } from "lucide-react";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
 import { GlobalLoader } from "@/components/ui/global-loader";
+import { apiFetch } from "@/lib/api";
+import { toast } from "sonner";
 
 type Admission = {
     _id: string;
@@ -29,9 +31,7 @@ export default function StudentManagementPage() {
     const fetchAdmissions = async () => {
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:5000/api/admission");
-            if (!res.ok) throw new Error("Failed to fetch students");
-            const data = await res.json();
+            const data = await apiFetch("/admission");
             setStudents(data.data || []);
         } catch (err: any) {
             setError(err.message);
@@ -54,25 +54,19 @@ export default function StudentManagementPage() {
 
         setIsDeleting(true);
         try {
-            const token = localStorage.getItem("adminToken");
-            const res = await fetch(`http://localhost:5000/api/admission/${studentToDelete._id}`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
+            await apiFetch(`/admission/${studentToDelete._id}`, {
+                method: "DELETE"
             });
-
-            if (!res.ok) {
-                throw new Error("Failed to delete application");
-            }
 
             // Update local state to remove the student
             setStudents(students.filter(s => s._id !== studentToDelete._id));
             setIsDeleteModalOpen(false);
             setStudentToDelete(null);
+
+            toast.success(`Application for ${studentToDelete.name} has been deleted successfully.`);
         } catch (err: any) {
             console.error(err);
-            // Optionally, show an error toast here
+            toast.error(err.message || "Failed to delete student application");
         } finally {
             setIsDeleting(false);
         }

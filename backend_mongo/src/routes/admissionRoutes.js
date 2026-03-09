@@ -6,6 +6,7 @@ import {
     updateAdmission,
     deleteAdmission
 } from '../controllers/admissionController.js';
+import { protect, admin } from '../utils/authMiddleware.js';
 
 const router = express.Router();
 
@@ -16,22 +17,22 @@ router.post('/register', registerAdmission);
 
 // @route   GET /api/admission
 // @desc    Get all student admissions
-// @access  Public
-router.get('/', getAdmissions);
+// @access  Private/Admin
+router.get('/', protect, admin, getAdmissions);
 
 // @route   GET /api/admission/:id
 // @desc    Get a specific student admission
-// @access  Public
-router.get('/:id', getAdmissionById);
+// @access  Private/Admin
+router.get('/:id', protect, admin, getAdmissionById);
 
 // @route   PUT /api/admission/:id
 // @desc    Update a specific student admission
-// @access  Public
-router.put('/:id', updateAdmission);
+// @access  Private/Admin
+router.put('/:id', protect, admin, updateAdmission);
 
 // @route   DELETE /api/admission/:id
 // @desc    Delete a specific student admission
-// @access  Public
-router.delete('/:id', deleteAdmission);
+// @access  Private/Admin
+router.delete('/:id', protect, admin, deleteAdmission);
 
 export default router;

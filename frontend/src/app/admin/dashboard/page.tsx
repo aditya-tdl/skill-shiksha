@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Users, BookOpen, Clock, Activity } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { apiFetch } from "@/lib/api";
 
 export default function AdminDashboardPage() {
     const router = useRouter();
@@ -22,23 +23,13 @@ export default function AdminDashboardPage() {
 
         const fetchStats = async () => {
             try {
-                const headers = { "Authorization": `Bearer ${token}` };
-
                 // Fetch admission stats
-                const admRes = await fetch("http://localhost:5000/api/admission", { headers });
-                let admissions = [];
-                if (admRes.ok) {
-                    const data = await admRes.json();
-                    admissions = data.data || [];
-                }
+                const admData = await apiFetch("/admission").catch(() => null);
+                const admissions = admData?.data || [];
 
                 // Fetch internships stats
-                const intRes = await fetch("http://localhost:5000/api/internships", { headers });
-                let activeProgramsCount = 0;
-                if (intRes.ok) {
-                    const data = await intRes.json();
-                    activeProgramsCount = data.count || 0;
-                }
+                const intData = await apiFetch("/internships").catch(() => null);
+                const activeProgramsCount = intData?.count || 0;
 
                 setStats({
                     totalStudents: admissions.length,
