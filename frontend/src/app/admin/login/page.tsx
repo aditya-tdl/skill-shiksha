@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
+import { BASE_URL } from "@/lib/api";
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function AdminLoginPage() {
         setLoading(true);
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/admin/login", {
+            const res = await fetch(`${BASE_URL}/auth/admin/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),

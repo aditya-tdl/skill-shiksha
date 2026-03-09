@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+export const BASE_URL = process.env.NODE_ENV === 'production'
+    ? "https://skillshiksha.ai/api/api"
+    : "http://localhost:5000/api";
 
 type FetchOptions = RequestInit & {
     requiresAuth?: boolean;

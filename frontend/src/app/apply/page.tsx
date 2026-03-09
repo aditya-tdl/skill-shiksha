@@ -16,6 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
+import { BASE_URL } from "@/lib/api";
 
 const steps = [
     { title: "Identity", icon: <User size={18} /> },
@@ -96,7 +97,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/admission/register`, {
+            const response = await fetch(`${BASE_URL}/admission/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
