@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://skill-shiksha.com/sitemap.xml',
+        sitemap: 'https://skillshiksha.ai/sitemap.xml',
     }
 }

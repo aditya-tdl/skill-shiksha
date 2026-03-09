@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
@@ -55,7 +57,17 @@ export default function AdminLoginPage() {
         <div className="min-h-screen flex items-center justify-center bg-background px-4">
             <div className="max-w-md w-full space-y-8 bg-card p-8 rounded-xl shadow-lg border border-border">
                 <div className="text-center">
-                    <h2 className="mt-6 text-3xl font-extrabold text-foreground">Admin Portal</h2>
+                    <Link href="/" className="inline-block mb-4">
+                        <Image
+                            src="/logo.png"
+                            alt="Skill Shiksha Logo"
+                            width={220}
+                            height={45}
+                            priority
+                            className="mx-auto"
+                        />
+                    </Link>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">Admin Portal</h2>
                     <p className="mt-2 text-sm text-muted-foreground">Sign in to access your dashboard</p>
                 </div>
 
