@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 
 export default function RootLayout({
@@ -99,16 +99,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {/* Google tag (gtag.js) */}
-          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=AW-17997259530" />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'AW-17997259530');
-            `}
-          </Script>
+          <GoogleAnalytics gaId="AW-17997259530" />
           <Navbar />
           {children}
           <Footer />

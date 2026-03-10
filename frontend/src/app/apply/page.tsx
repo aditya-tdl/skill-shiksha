@@ -17,6 +17,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { BASE_URL } from "@/lib/api";
+import { auth } from "@/lib/firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
 
 const steps = [
     { title: "Identity", icon: <User size={18} /> },
@@ -57,6 +59,14 @@ export default function RegisterPage() {
         background: ""
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+    // Firebase Auth States
+    const [otp, setOtp] = useState("");
+    const [isOtpSent, setIsOtpSent] = useState(false);
+    const [isOtpVerified, setIsOtpVerified] = useState(false);
+    const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
+    const [otpError, setOtpError] = useState("");
+
     const { toast } = useToast();
 
     const validateStep1 = () => {
@@ -79,9 +89,122 @@ export default function RegisterPage() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const nextStep = () => {
-        if (step === 1 && !validateStep1()) {
+    const setupRecaptcha = () => {
+        if (!auth) {
+            setOtpError("Authentication service is unavailable.");
             return;
+        }
+        if (!window.recaptchaVerifier) {
+            window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+                'size': 'invisible',
+                'callback': (response: any) => {
+                    // reCAPTCHA solved
+                },
+                'expired-callback': () => {
+                    // Response expired
+                    setOtpError("Recaptcha expired. Please try again.");
+                }
+            });
+        }
+    };
+
+    const handleSendOtp = async () => {
+        if (!validateStep1()) return;
+
+        // ** DEV BYPASS **: If phone is exactly ten zeroes, simulate a success immediately.
+        if (formData.phone === '0000000000') {
+            setIsOtpSent(true);
+            setOtpError("");
+            toast({ title: "OTP Sent (Mock)", description: "Use 123456 to verify." });
+            return;
+        }
+
+        if (!auth) {
+            setOtpError("Authentication service is unavailable.");
+            return;
+        }
+
+        setLoading(true);
+        setOtpError("");
+        try {
+            setupRecaptcha();
+            const appVerifier = window.recaptchaVerifier;
+            // Format phone number to E.164 format assuming +91 for India. Adjust if needed.
+            const phoneNumber = `+91${formData.phone}`;
+            const confirmation = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+            setConfirmationResult(confirmation);
+            setIsOtpSent(true);
+            toast({ title: "OTP Sent", description: "Please check your phone for the verification code." });
+        } catch (error: any) {
+            console.error("Error sending OTP:", error);
+            
+            // Provide a more user-friendly error message for rate-limiting
+            if (error.code === 'auth/too-many-requests') {
+                setOtpError("Too many attempts. Please wait a few minutes or use a test number.");
+            } else {
+                setOtpError(error.message || "Failed to send OTP. Please try again.");
+            }
+
+            // Properly reset recaptcha so they can try again without a page refresh
+            if (window.recaptchaVerifier) {
+                try {
+                    window.recaptchaVerifier.clear();
+                } catch (e) {
+                    console.error("Failed to clear recaptcha", e);
+                }
+                window.recaptchaVerifier = undefined;
+                
+                // Also clear the DOM element to ensure a fresh start
+                const recaptchaContainer = document.getElementById('recaptcha-container');
+                if (recaptchaContainer) {
+                    recaptchaContainer.innerHTML = '';
+                }
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleVerifyOtp = async () => {
+        if (!otp || otp.length !== 6) {
+            setOtpError("Please enter a 6-digit OTP");
+            return;
+        }
+
+        // ** DEV BYPASS **: If phone is ten zeroes, instantly accept 123456
+        if (formData.phone === '0000000000' && otp === '123456') {
+            setIsOtpVerified(true);
+            toast({ title: "Phone Verified (Mock)", description: "Developer bypass successful." });
+            setStep(s => Math.min(s + 1, 3));
+            return;
+        }
+
+        setLoading(true);
+        setOtpError("");
+        try {
+            if (confirmationResult) {
+                await confirmationResult.confirm(otp);
+                setIsOtpVerified(true);
+                toast({ title: "Phone Verified", description: "Your phone number has been verified successfully." });
+                // Move to next step automatically
+                setStep(s => Math.min(s + 1, 3));
+            }
+        } catch (error: any) {
+            console.error("Error verifying OTP:", error);
+            setOtpError("Invalid OTP. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const nextStep = () => {
+        if (step === 1) {
+            if (!validateStep1()) return;
+            // Only allow proceeding if OTP is verified
+            if (!isOtpVerified) {
+                setOtpError("Please verify your phone number to proceed.");
+                return;
+            }
         }
         setStep(s => Math.min(s + 1, 3));
     };
@@ -90,7 +213,7 @@ export default function RegisterPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (step === 1 && !validateStep1()) {
+        if (step === 1 && (!validateStep1() || !isOtpVerified)) {
             return;
         }
 
@@ -319,10 +442,58 @@ export default function RegisterPage() {
                                             </Label>
                                             {errors.phone && <span className="text-red-500 text-xs mt-1 absolute -bottom-5 left-2">{errors.phone}</span>}
                                         </div>
-                                        <Button type="button" onClick={nextStep} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
-                                            Continue to Program
-                                            <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                        </Button>
+
+                                        {/* OTP Section */}
+                                        {isOtpSent && !isOtpVerified && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto" }}
+                                                className="relative group mb-6"
+                                            >
+                                                <Input
+                                                    id="otp"
+                                                    name="otp"
+                                                    type="text"
+                                                    placeholder=" "
+                                                    maxLength={6}
+                                                    value={otp}
+                                                    onChange={(e) => {
+                                                        const val = e.target.value.replace(/\D/g, '');
+                                                        setOtp(val);
+                                                        setOtpError("");
+                                                    }}
+                                                    className={`peer rounded-xl h-14 bg-muted/30 border-2 ${otpError ? 'border-red-500 focus:border-red-500' : 'border-transparent focus:border-primary/50'} focus:bg-background focus:ring-0 transition-all pt-5 pb-1 px-4 shadow-sm`}
+                                                />
+                                                <Label
+                                                    htmlFor="otp"
+                                                    className={`absolute left-4 top-1.5 text-[10px] uppercase font-bold text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:normal-case peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:font-bold ${otpError ? 'peer-focus:text-red-500' : 'peer-focus:text-primary'} peer-focus:uppercase pointer-events-none`}
+                                                >
+                                                    Enter 6-digit OTP*
+                                                </Label>
+                                                {otpError && <span className="text-red-500 text-xs mt-1 absolute -bottom-5 left-2">{otpError}</span>}
+                                            </motion.div>
+                                        )}
+
+                                        <div id="recaptcha-container"></div>
+
+                                        {!isOtpVerified ? (
+                                            !isOtpSent ? (
+                                                <Button type="button" onClick={handleSendOtp} disabled={loading} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
+                                                    {loading ? "Sending..." : "Verify Mobile Number"}
+                                                    {!loading && <ShieldCheck className="ml-2 w-5 h-5" />}
+                                                </Button>
+                                            ) : (
+                                                <Button type="button" onClick={handleVerifyOtp} disabled={loading || otp.length !== 6} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
+                                                    {loading ? "Verifying..." : "Confirm OTP & Continue"}
+                                                    {!loading && <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
+                                                </Button>
+                                            )
+                                        ) : (
+                                            <Button type="button" onClick={nextStep} className="w-full h-14 bg-green-500 hover:bg-green-600 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
+                                                Phone Verified - Continue
+                                                <CheckCircle2 className="ml-2" />
+                                            </Button>
+                                        )}
                                     </motion.div>
                                 )}
 
