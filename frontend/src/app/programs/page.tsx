@@ -10,7 +10,7 @@ import { BookOpen, Code, Rocket, Trophy, Briefcase, GraduationCap } from "lucide
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-const courseData = {
+export const courseData = {
     mern: {
         title: "MERN Stack Full-Stack Developer",
         description: "A comprehensive 12-week program covering MongoDB, Express.js, React, and Node.js for modern full-stack web development.",

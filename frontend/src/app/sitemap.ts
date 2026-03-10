@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: 'https://skillshiksha.ai',
             lastModified: new Date(),
-            changeFrequency: 'yearly',
+            changeFrequency: 'weekly',
             priority: 1,
         },
         {
@@ -18,25 +18,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: 'https://skillshiksha.ai/programs',
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.5,
+            priority: 0.9,
         },
+        // Adding location-specific paths to help local SEO (Offline Internships in Lucknow)
         {
-            url: 'https://skillshiksha.ai/programs',
+            url: 'https://skillshiksha.ai/offline-internship-lucknow',
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.5,
+            priority: 0.8,
         },
         {
-            url: 'https://skillshiksha.ai/programs',
+            url: 'https://skillshiksha.ai/offline-internship-uttar-pradesh',
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.5,
-        },
-        {
-            url: 'https://skillshiksha.ai/programs',
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.5,
+            priority: 0.7,
         },
     ]
 }
