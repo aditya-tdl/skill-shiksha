@@ -7,8 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/components/mode-toggle";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Programs", href: "/programs" },
   { label: "Latest Trends", href: "/latest-trends" },
   { label: "Mentors", href: "/mentors" },
@@ -39,15 +41,26 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={cn(
+                  "text-sm transition-colors hover:text-foreground",
+                  isActive
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <Link href="/apply">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
               Apply Now
@@ -73,16 +86,27 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="section-container py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={cn(
+                    "transition-colors py-2 hover:text-foreground",
+                    isActive
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground"
+                  )}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link href="/apply">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
                 Apply Now
