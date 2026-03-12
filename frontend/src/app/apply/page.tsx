@@ -91,25 +91,31 @@ export default function RegisterPage() {
 
     const setupRecaptcha = () => {
         if (!auth) {
+            console.error("SetupRecaptcha failed: Authentication service (auth) is undefined or null.");
             setOtpError("Authentication service is unavailable.");
             return;
         }
         if (!window.recaptchaVerifier) {
-            window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-                'size': 'invisible',
-                'callback': (response: any) => {
-                    // reCAPTCHA solved
-                },
-                'expired-callback': () => {
-                    // Response expired
-                    setOtpError("Recaptcha expired. Please try again.");
-                }
-            });
+            try {
+                window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+                    'size': 'invisible',
+                    'callback': (response: any) => {
+                        // reCAPTCHA solved
+                    },
+                    'expired-callback': () => {
+                        setOtpError("Recaptcha expired. Please try again.");
+                    }
+                });
+            } catch (error) {
+                console.error("Error creating RecaptchaVerifier object:", error);
+            }
         }
     };
 
     const handleSendOtp = async () => {
-        if (!validateStep1()) return;
+        if (!validateStep1()) {
+            return;
+        }
 
         // ** DEV BYPASS **: If phone is exactly ten zeroes, simulate a success immediately.
         if (formData.phone === '0000000000') {
@@ -120,6 +126,7 @@ export default function RegisterPage() {
         }
 
         if (!auth) {
+            console.error("handleSendOtp failed: Authentication service (auth) is undefined.");
             setOtpError("Authentication service is unavailable.");
             return;
         }
@@ -128,19 +135,25 @@ export default function RegisterPage() {
         setOtpError("");
         try {
             setupRecaptcha();
+            
             const appVerifier = window.recaptchaVerifier;
+            
             // Format phone number to E.164 format assuming +91 for India. Adjust if needed.
             const phoneNumber = `+91${formData.phone}`;
+            
             const confirmation = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+            
             setConfirmationResult(confirmation);
             setIsOtpSent(true);
             toast({ title: "OTP Sent", description: "Please check your phone for the verification code." });
         } catch (error: any) {
-            console.error("Error sending OTP:", error);
+            console.error("Error in handleSendOtp:", error);
             
             // Provide a more user-friendly error message for rate-limiting
             if (error.code === 'auth/too-many-requests') {
                 setOtpError("Too many attempts. Please wait a few minutes or use a test number.");
+            } else if (error.code === 'auth/invalid-phone-number') {
+                setOtpError("Firebase rejected this phone number format.");
             } else {
                 setOtpError(error.message || "Failed to send OTP. Please try again.");
             }
@@ -150,7 +163,7 @@ export default function RegisterPage() {
                 try {
                     window.recaptchaVerifier.clear();
                 } catch (e) {
-                    console.error("Failed to clear recaptcha", e);
+                    console.error("Failed to clear recaptcha instance during error handling:", e);
                 }
                 window.recaptchaVerifier = undefined;
                 

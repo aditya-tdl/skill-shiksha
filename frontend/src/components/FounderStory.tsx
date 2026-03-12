@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import { Quote, Award, Sparkles, BookOpen } from "lucide-react";
 import Image from "next/image";
+// import ceoImg from "@/assets/ceo.jpeg";
+// import ceoImg from "@/assets/ceo.png";
+import ceoImg from "@/assets/ceo2.png";
+
 
 const FounderStory = () => {
     return (
@@ -22,39 +26,42 @@ const FounderStory = () => {
                     >
                         <div className="relative z-10 rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-border/50">
                             <Image
-                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
-                                alt="Founder of Skill Shiksha"
+                                src={ceoImg}
+                                alt="Karamveer Singh - CEO & Founder of Skill Shiksha"
                                 fill
-                                className="object-cover"
+                                className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
-                            <div className="absolute bottom-6 left-6 right-6 p-6 glass-card rounded-2xl border-white/10">
-                                <h3 className="text-xl font-bold font-display text-muted-foreground italic">"Education is not just about learning facts, but training the mind to think."</h3>
+                            <div className="absolute hidden md:block bottom-6 sm:bottom-10 left-4 right-4 sm:left-6 sm:right-6 p-4 sm:p-6 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm">
+                                <h3 className="text-xs sm:text-base md:text-xl font-bold font-display text-white italic leading-relaxed">
+                                    "Education is not just about learning facts, but training the mind to think."
+                                </h3>
                             </div>
                         </div>
 
                         {/* Decorative cards */}
-                        <div className="absolute -top-6 -right-6 lg:-right-10 p-4 glass-card rounded-xl border border-border/50 shadow-xl animate-float z-20">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                    <Award size={20} />
+                        <div className="absolute -top-6 -right-6 lg:-right-10 p-2.5 sm:p-4 glass-card rounded-xl border border-border/50 shadow-xl animate-float z-20 bg-background/80 backdrop-blur-md">
+                            <div className="flex items-center gap-2 sm:gap-3">
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                                    <Award className="w-5 h-5" />
                                 </div>
-                                <div>
-                                    <p className="text-xs text-muted-foreground uppercase font-semibold">Experience</p>
-                                    <p className="text-sm font-bold">12+ Years in Tech</p>
+                                <div className="min-w-0">
+                                    <p className="text-xs text-muted-foreground uppercase font-semibold truncate">Experience</p>
+                                    <p className="text-sm font-bold truncate">12+ Years in Tech</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="absolute -bottom-6 -left-6 lg:-left-10 p-4 glass-card rounded-xl border border-border/50 shadow-xl animate-float-delayed z-20">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
-                                    <Sparkles size={20} />
+                        <div className="absolute -bottom-6 -left-6 lg:-left-10 p-2.5 sm:p-4 glass-card rounded-xl border border-border/50 shadow-xl animate-float-delayed z-20 bg-background/80 backdrop-blur-md">
+                            <div className="flex items-center gap-2 sm:gap-3">
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
+                                    <Sparkles className="w-5 h-5" />
                                 </div>
-                                <div>
-                                    <p className="text-xs text-muted-foreground uppercase font-semibold">Mission</p>
-                                    <p className="text-sm font-bold">Empowering 10k Developers</p>
+                                <div className="min-w-0">
+                                    <p className="text-xs text-muted-foreground uppercase font-semibold truncate">Mission</p>
+                                    <p className="text-sm font-bold truncate">Empowering 10k Developers</p>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +109,7 @@ const FounderStory = () => {
                             <div className="flex items-center gap-4">
                                 <div className="h-[2px] w-12 bg-primary/50" />
                                 <div>
-                                    <h4 className="text-xl font-bold font-display">Aditya Vardhan</h4>
+                                    <h4 className="text-xl font-bold font-display">Karamveer Singh</h4>
                                     <p className="text-sm text-primary font-medium uppercase tracking-widest">CEO & Founder, Skill Shiksha</p>
                                 </div>
                             </div>

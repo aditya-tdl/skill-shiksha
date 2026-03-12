@@ -16,6 +16,7 @@ const app = express();
 
 // Configure Custom CORS
 const allowedOrigins = [
+    'https://jncvd963-3000.inc1.devtunnels.ms/',
     'http://localhost:3000',
     'http://localhost:5173',
     'https://skillshiksha.ai',

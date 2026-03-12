@@ -24,10 +24,10 @@ export default function Home() {
       <CareerQuiz />
       <InternshipPrograms />
       <ProjectsShowcase />
-      {/* <MentorSection /> */}
+      <MentorSection />
       <PlacementPartners />
       <Testimonials />
-      {/* <FounderStory /> */}
+      <FounderStory />
       {/* <OfficeGallery /> */}
       <CTASection />
     </main>
