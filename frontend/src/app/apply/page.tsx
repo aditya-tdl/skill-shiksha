@@ -135,20 +135,20 @@ export default function RegisterPage() {
         setOtpError("");
         try {
             setupRecaptcha();
-            
+
             const appVerifier = window.recaptchaVerifier;
-            
+
             // Format phone number to E.164 format assuming +91 for India. Adjust if needed.
             const phoneNumber = `+91${formData.phone}`;
-            
+
             const confirmation = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
-            
+
             setConfirmationResult(confirmation);
             setIsOtpSent(true);
             toast({ title: "OTP Sent", description: "Please check your phone for the verification code." });
         } catch (error: any) {
             console.error("Error in handleSendOtp:", error);
-            
+
             // Provide a more user-friendly error message for rate-limiting
             if (error.code === 'auth/too-many-requests') {
                 setOtpError("Too many attempts. Please wait a few minutes or use a test number.");
@@ -166,7 +166,7 @@ export default function RegisterPage() {
                     console.error("Failed to clear recaptcha instance during error handling:", e);
                 }
                 window.recaptchaVerifier = undefined;
-                
+
                 // Also clear the DOM element to ensure a fresh start
                 const recaptchaContainer = document.getElementById('recaptcha-container');
                 if (recaptchaContainer) {
@@ -319,7 +319,7 @@ export default function RegisterPage() {
 
                     <div className="space-y-4">
                         {[
-                            { icon: <Star />, text: "Ranked #1 for Tech Placement", sub: "Based on 2025 Industry Reports" },
+
                             { icon: <Users />, text: "1:1 Mentorship Included", sub: "Learn from top industry veterans" },
                             { icon: <Trophy />, text: "Job Placement Guarantee", sub: "Support until you get hired" }
                         ].map((item, i) => (

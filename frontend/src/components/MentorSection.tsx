@@ -1,12 +1,13 @@
 "use client";
-
-import { motion, Variants } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Linkedin, Twitter, MapPin, Briefcase } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import vivekImg from "@/assets/vivek_singh.png";
 import javedImg from "@/assets/javed_akhtar.png";
 import adityaImg from "@/assets/aditya_bharti1.png";
@@ -56,7 +57,7 @@ const mentors = [
     company: "TechDock Labs",
     location: "India",
     image: ashishImg,
-    bio: "Experienced Backend Developer with decent experience and expertise. He builds secure RESTful APIs and highly efficient, scalable database systems.",
+    bio: "Backend Developer specializing in Node.js, Express.js, and MongoDB, experienced in building scalable APIs and backend systems for real-world applications. He mentors developers in backend architecture, REST API design, database optimization, and building production-ready applications.",
     expertise: ["Node.js", "MongoDB", "Express.js", "PostgreSQL", "Architecture"],
     companyColor: "text-purple-500",
     companyBg: "bg-purple-500/10",
@@ -78,7 +79,60 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
+const MentorBio = ({
+  bio,
+  isExpanded,
+  onToggle
+}: {
+  bio: string;
+  isExpanded: boolean;
+  onToggle: () => void;
+}) => {
+  const maxLength = 120;
+  const shouldTruncate = bio.length > maxLength;
+  const truncatedBio = bio.slice(0, maxLength);
+
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="relative overflow-hidden">
+        <motion.p
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-muted-foreground text-sm leading-relaxed"
+        >
+          {isExpanded ? bio : (shouldTruncate ? `${truncatedBio}...` : bio)}
+        </motion.p>
+      </div>
+      {shouldTruncate && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            onToggle();
+          }}
+          className="text-xs font-semibold text-primary hover:underline w-fit transition-all flex items-center gap-1"
+        >
+          {isExpanded ? "Show Less" : "Show More"}
+        </button>
+      )}
+    </div>
+  );
+};
+
 const MentorSection = () => {
+  const [expandedIds, setExpandedIds] = useState<number[]>([]);
+
+  const toggleBio = (id: number) => {
+    setExpandedIds((prev) => {
+      const isCurrentlyExpanded = prev.includes(id);
+      if (isCurrentlyExpanded) {
+        return prev.filter(item => item !== id);
+      } else {
+        return [...prev, id];
+      }
+    });
+  };
+
   return (
     <section id="mentors" className="py-8 lg:py-10 relative overflow-hidden bg-secondary/10">
       {/* Background Decorative Elements */}
@@ -107,11 +161,15 @@ const MentorSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto border-t-0 px-4 sm:px-6 lg:px-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto border-t-0 px-4 sm:px-6 lg:px-8 items-start"
         >
           {mentors.map((mentor) => (
-            <motion.div key={mentor.id} variants={itemVariants}>
-              <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
+            <motion.div
+              key={mentor.id}
+              variants={itemVariants}
+              layout
+            >
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group overflow-hidden flex flex-col">
                 <CardContent className="p-0 flex flex-col h-full">
                   {/* Image Header */}
                   <div className="relative h-80 sm:h-72 w-full overflow-hidden bg-muted">
@@ -123,42 +181,42 @@ const MentorSection = () => {
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    {/* <div className="absolute bottom-4 left-4 z-20 flex gap-2">
-                      <Link href="#" className="p-1.5 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-colors">
-                        <Linkedin className="w-4 h-4" />
-                      </Link>
-                      <Link href="#" className="p-1.5 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-colors">
-                        <Twitter className="w-4 h-4" />
-                      </Link>
-                    </div> */}
                   </div>
 
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="mb-4 w-full overflow-hidden">
+                  <div className="p-5 flex flex-col flex-1 gap-4">
+                    <div className="w-full overflow-hidden">
                       <h3 className="text-xl font-bold mb-1 text-foreground truncate">{mentor.name}</h3>
-                      <p className="text-muted-foreground font-medium flex items-center gap-1.5 text-sm min-w-0">
-                        <Briefcase className="w-4 h-4 shrink-0" />
-                        <span className="truncate" title={mentor.role}>{mentor.role}</span>
-                      </p>
-                      <p className="text-muted-foreground/70 flex items-center gap-1.5 text-sm mt-1 min-w-0">
-                        <MapPin className="w-4 h-4 shrink-0" />
-                        <span className="truncate" title={mentor.location}>{mentor.location}</span>
-                      </p>
+                      <div className="flex flex-col gap-1.5">
+                        <p className="text-muted-foreground font-medium flex items-center gap-1.5 text-sm min-w-0">
+                          <Briefcase className="w-4 h-4 shrink-0 text-primary/70" />
+                          <span className="truncate" title={mentor.role}>{mentor.role}</span>
+                        </p>
+                        <p className="text-muted-foreground/70 flex items-center gap-1.5 text-sm min-w-0">
+                          <MapPin className="w-4 h-4 shrink-0" />
+                          <span className="truncate" title={mentor.location}>{mentor.location}</span>
+                        </p>
+                      </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                      {mentor.bio}
-                    </p>
-
-                    <div className="mt-auto">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Core Expertise</h4>
-                      <div className="flex flex-wrap gap-2">
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-2">Core Expertise</h4>
+                      <div className="flex flex-wrap gap-1.5">
                         {mentor.expertise.map((skill) => (
-                          <Badge key={skill} variant="secondary" className="bg-secondary/50 font-normal">
+                          <Badge key={skill} variant="secondary" className="bg-secondary/40 hover:bg-secondary/60 font-normal text-[11px] px-2 py-0 border-none transition-colors">
                             {skill}
                           </Badge>
                         ))}
                       </div>
+                    </div>
+
+                    <Separator className="opacity-50" />
+
+                    <div className="mt-auto">
+                      <MentorBio
+                        bio={mentor.bio}
+                        isExpanded={expandedIds.includes(mentor.id)}
+                        onToggle={() => toggleBio(mentor.id)}
+                      />
                     </div>
                   </div>
                 </CardContent>
