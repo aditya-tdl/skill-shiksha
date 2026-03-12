@@ -146,7 +146,7 @@ const MentorSection = () => {
                       </p>
                     </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3 md:line-clamp-4 min-h-[4.5rem] md:min-h-[6rem]">
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                       {mentor.bio}
                     </p>
 
