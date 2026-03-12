@@ -101,8 +101,8 @@ export default function MentorsPage() {
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-foreground">
                         Learn From The <span className="text-primary">Best</span>
                     </h1>
-                    <p className="text-muted-foreground text-lg md:text-xl">
-                        Our mentors are seasoned professionals from top global tech companies. Get 1-on-1 guidance, career advice, and insider industry knowledge.
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+                        Bridge the gap between learning and industry with 1-on-1 mentorship from technical leaders. Master real-world skills through personalized guidance and deep industry insights.
                     </p>
                 </motion.div>
 

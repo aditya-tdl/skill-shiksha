@@ -13,58 +13,84 @@ import { Suspense } from "react";
 export const courseData = {
     mern: {
         title: "MERN Stack Full-Stack Developer",
-        description: "A comprehensive 12-week program covering MongoDB, Express.js, React, and Node.js for modern full-stack web development.",
+        price: "₹30,000",
+        description: "A comprehensive 6-month (24-week) program covering MongoDB, Express.js, React, and Node.js for industrial full-stack web development.",
         overview: [
-            { week: "Week 1", topic: "Web fundamentals & HTML" },
-            { week: "Week 2", topic: "CSS & Responsive Design" },
-            { week: "Week 3", topic: "JavaScript Basics" },
-            { week: "Week 4", topic: "Advanced JS & DOM" },
-            { week: "Week 5", topic: "React Basics" },
-            { week: "Week 6", topic: "Node.js Intro" },
-            { week: "Week 7", topic: "REST APIs" },
-            { week: "Week 8", topic: "MongoDB" },
-            { week: "Week 9", topic: "Auth & Security" },
-            { week: "Week 10", topic: "Full Stack Integration" },
-            { week: "Week 11", topic: "Mini Project" },
-            { week: "Week 12", topic: "Capstone + Interviews" },
+            { week: "Week 1", topic: "Web Fundamentals & HTML" },
+            { week: "Week 2", topic: "Advanced HTML5 & Forms" },
+            { week: "Week 3", topic: "CSS Essentials & Box Model" },
+            { week: "Week 4", topic: "Advanced CSS & Responsive Design" },
+            { week: "Week 5", topic: "CSS Frameworks (Tailwind)" },
+            { week: "Week 6", topic: "JavaScript Core Concepts" },
+            { week: "Week 7", topic: "DOM Manipulation & Events" },
+            { week: "Week 8", topic: "Advanced ES6+ & Mini Project" },
+            { week: "Week 9", topic: "Node.js Architecture & Basics" },
+            { week: "Week 10", topic: "Express.js & Routing" },
+            { week: "Week 11", topic: "RESTful API Design" },
+            { week: "Week 12", topic: "MongoDB & Mongoose Basics" },
+            { week: "Week 13", topic: "Advanced DB Queries & Aggregations" },
+            { week: "Week 14", topic: "Authentication (JWT/Bcrypt)" },
+            { week: "Week 15", topic: "Security & API Optimization" },
+            { week: "Week 16", topic: "Backend Portfolio Project" },
+            { week: "Week 17", topic: "React Core & JSX" },
+            { week: "Week 18", topic: "State, Props & Lifecycle" },
+            { week: "Week 19", topic: "React Hooks & Custom Hooks" },
+            { week: "Week 20", topic: "React Router & Advanced UI" },
+            { week: "Week 21", topic: "Full Stack Integration Basics" },
+            { week: "Week 22", topic: "Advanced State Management" },
+            { week: "Week 23", topic: "Testing & Optimization" },
+            { week: "Week 24", topic: "Capstone Project & Deployment" },
         ],
         phases: [
             {
-                title: "Phase 1: Web & JavaScript Foundations (Weeks 1-4)",
+                title: "Phase 1: Web & JavaScript Mastery (Weeks 1-8)",
                 weeks: [
-                    { week: 1, topics: "Web fundamentals, HTML5 & Semantic HTML, CSS3 basics", output: "Static Responsive Website" },
-                    { week: 2, topics: "Responsive design (Flexbox), Advanced CSS (Grid, Media Queries)", output: "Interactive Web Pages" },
-                    { week: 3, topics: "JavaScript basics, Variables, Data Types, Functions, DOM manipulation", output: "JS-based Mini App" },
-                    { week: 4, topics: "JavaScript ES6+, Arrow functions, Destructuring, Events & Forms validation, Git & GitHub", output: "Mini Project 1: JS Web App" },
+                    { week: 1, topics: "Web fundamentals, HTML5 & Semantic HTML", output: "Static Website" },
+                    { week: 2, topics: "Advanced Forms, SEO basics, Accessibility", output: "Accessible Web Pages" },
+                    { week: 3, topics: "CSS3 Essentials, Box Model, Flexbox", output: "Responsive Layouts" },
+                    { week: 4, topics: "CSS Grid, Animations, Responsive Design", output: "Modern UI Layout" },
+                    { week: 5, topics: "Tailwind CSS, Utility-first styling", output: "Styled Components" },
+                    { week: 6, topics: "JavaScript Core, Scopes, Closures", output: "Logic Programs" },
+                    { week: 7, topics: "DOM Manipulation, Events, API intro", output: "Interactive Mini App" },
+                    { week: 8, topics: "ES6+, Async JS, Mini Project Review", output: "Mini Project 1: Portfolio" },
                 ]
             },
             {
-                title: "Phase 2: Backend Development (Weeks 5-8)",
+                title: "Phase 2: Professional Backend Development (Weeks 9-16)",
                 weeks: [
-                    { week: 5, topics: "NPM basics, Intro to Node.js, Basic backend concepts", output: "Basic REST API" },
-                    { week: 6, topics: "Node.js architecture, Express.js setup, REST API concepts, Routing & Controllers", output: "Database-driven API" },
-                    { week: 7, topics: "MongoDB fundamentals, Mongoose ODM, CRUD operations, Schema design", output: "Auth-enabled Backend" },
-                    { week: 8, topics: "Authentication & Authorization, JWT & bcrypt, Role-based access, API security basics, MVC architecture", output: "Mini Project 2: Backend API" },
+                    { week: 9, topics: "NPM, Node.js architecture, Core modules", output: "CLI Tools" },
+                    { week: 10, topics: "Express.js setup, Middleware, Routing", output: "Modular API" },
+                    { week: 11, topics: "REST API Design, Controllers, error handling", output: "RESTful Backend" },
+                    { week: 12, topics: "MongoDB fundamentals, Mongoose, Schemas", output: "Database API" },
+                    { week: 13, topics: "Aggregations, Indexing, Relations", output: "Optimized DB" },
+                    { week: 14, topics: "JWT Authentication, Bcrypt, Session mgmt", output: "Secure Auth API" },
+                    { week: 15, topics: "RBAC, Security best practices, CORS", output: "Protected Backend" },
+                    { week: 16, topics: "Backend Capstone: Scalable API Service", output: "Mini Project 2: Store API" },
                 ]
             },
             {
-                title: "Phase 3: Frontend + Full-Stack Integration (Weeks 9-12)",
+                title: "Phase 3: Professional Frontend & Integration (Weeks 17-24)",
                 weeks: [
-                    { week: 9, topics: "React fundamentals, Components & Props, State & Hooks, JSX", output: "React UI App" },
-                    { week: 10, topics: "React Router, API integration (Axios), Forms & Validation, Context API", output: "Connected Frontend" },
-                    { week: 11, topics: "Full-stack integration, Auth integration (JWT), Protected routes, Environment variables", output: "Full-Stack App" },
-                    { week: 12, topics: "Deployment (Frontend + Backend), MongoDB Atlas, Performance basics, Final project demo", output: "Capstone Project" },
+                    { week: 17, topics: "React fundamentals, Components, JSX", output: "React UI" },
+                    { week: 18, topics: "State, Props, Component Lifecycle", output: "Dynamic App" },
+                    { week: 19, topics: "React Hooks, Context API, Refs", output: "Custom Hook Library" },
+                    { week: 20, topics: "React Router, Navigation, Layouts", output: "SPA Web App" },
+                    { week: 21, topics: "Full-stack integration, Axios, API hooks", output: "Connected Full-Stack" },
+                    { week: 22, topics: "State Management (Redux/Zustand), DevTools", output: "Complex State App" },
+                    { week: 23, topics: "Unit testing, Performance, Clean code", output: "Production Build" },
+                    { week: 24, topics: "Deployment, Final Capstone Project Demo", output: "Live Industry Project" },
                 ]
             }
         ],
         outcomes: {
             certificate: "MERN Stack Full-Stack Developer",
-            portfolio: "GitHub + Live Project",
-            career: "Internship / Junior Full-Stack Role"
+            portfolio: "GitHub + Live Industry Project",
+            career: "Full-Stack Developer / MERN Specialist"
         }
     },
     nodejs: {
         title: "Node.js Backend Developer",
+        price: "₹15,000",
         description: "An intensive 12-week backend specialization focusing on Node.js, Express, MongoDB, and production-ready API development.",
         overview: [
             { week: "Week 1", topic: "Node Architecture" },
@@ -117,6 +143,7 @@ export const courseData = {
     },
     react: {
         title: "React.js Frontend Developer",
+        price: "₹15,000",
         description: "A specialized 12-week program focused on modern React development, UI/UX best practices, and production-ready frontend applications.",
         overview: [
             { week: "Week 1", topic: "Modern JavaScript" },
@@ -169,6 +196,7 @@ export const courseData = {
     },
     flutter: {
         title: "Flutter Developer",
+        price: "₹15,000",
         description: "A comprehensive 12-week mobile development program covering Flutter, Dart, Firebase, and cross-platform app development for iOS and Android.",
         overview: [
             { week: "Week 1", topic: "Dart Basics" },
@@ -221,6 +249,7 @@ export const courseData = {
     },
     devops: {
         title: "Cloud & DevOps Engineer",
+        price: "₹15,000",
         description: "A comprehensive 12-week program focused on cloud infrastructure, CI/CD pipelines, containerization, and modern deployment strategies.",
         overview: [
             { week: "Week 1", topic: "Linux & Shell Scripting" },
@@ -273,6 +302,7 @@ export const courseData = {
     },
     manual_testing: {
         title: "Manual Quality Assurance Tester",
+        price: "₹15,000",
         description: "A comprehensive 12-week program focused on manual software testing, test case design, defect tracking, and QA methodologies.",
         overview: [
             { week: "Week 1", topic: "Software Testing Basics" },
@@ -325,6 +355,7 @@ export const courseData = {
     },
     ui_ux: {
         title: "UI/UX Designer",
+        price: "₹15,000",
         description: "An intensive 12-week design boot-camp teaching user research, wireframing, prototyping, and modern interface design using Figma.",
         overview: [
             { week: "Week 1", topic: "Design Principles" },
@@ -377,6 +408,7 @@ export const courseData = {
     },
     project_manager: {
         title: "IT Project Manager",
+        price: "₹15,000",
         description: "A 12-week program on managing software projects, Agile/Scrum methodologies, team coordination, and project delivery.",
         overview: [
             { week: "Week 1", topic: "Project Management Basics" },
@@ -456,7 +488,7 @@ function ProgramsContent() {
                         Full-Stack & <span className="gradient-text">Specialized</span> Development
                     </h1>
                     <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                        12-Week Intensive Bootcamp designed to take you from beginner to industry-ready developer.
+                        Intensive Bootcamps designed to take you from beginner to industry-ready specialist.
                     </p>
                 </motion.div>
 
@@ -485,7 +517,7 @@ function ProgramsContent() {
                                                 <CardDescription className="text-lg pt-2">{course.description}</CardDescription>
                                             </div>
                                             <div className="flex flex-col items-start sm:items-end bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
-                                                <span className="text-2xl font-bold font-display text-primary">₹15,000</span>
+                                                <span className="text-2xl font-bold font-display text-primary">{(course as any).price || "₹15,000"}</span>
                                                 <span className="text-xs text-muted-foreground mr-1">/ EMI available</span>
                                             </div>
                                         </div>

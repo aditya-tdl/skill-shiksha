@@ -97,8 +97,8 @@ const MentorSection = () => {
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
             Learn from <span className="gradient-text">The Best</span>
           </h2>
-          <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto">
-            Our mentors are seasoned professionals from top global tech companies. Get 1-on-1 guidance, career advice, and insider industry knowledge.
+          <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            Bridge the gap between learning and industry with 1-on-1 mentorship from technical leaders. Master real-world skills through personalized guidance and deep industry insights.
           </p>
         </motion.div>
 
