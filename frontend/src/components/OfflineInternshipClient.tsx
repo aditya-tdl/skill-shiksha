@@ -71,7 +71,7 @@ function OfflineProgramsContent({ locationName }: Props) {
                                                 <CardDescription className="text-lg pt-2">{course.description}</CardDescription>
                                             </div>
                                             <div className="flex flex-col items-start sm:items-end bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
-                                                <span className="text-2xl font-bold font-display text-primary">₹20,000</span>
+                                                <span className="text-2xl font-bold font-display text-primary">₹30,000</span>
                                                 <span className="text-xs text-muted-foreground mr-1">/ EMI available</span>
                                             </div>
                                         </div>

@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { User, LogOut } from "lucide-react";
+import { User, LogOut, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ConfirmationModal } from "@/components/ui/confirmation-modal";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
 
-export function AdminNavbar() {
+interface AdminNavbarProps {
+    onMenuClick: () => void;
+}
+
+export function AdminNavbar({ onMenuClick }: AdminNavbarProps) {
     const [adminData, setAdminData] = useState({ name: "Admin User", email: "admin@skillshiksha.com" });
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
     const router = useRouter();
@@ -37,8 +41,18 @@ export function AdminNavbar() {
 
     return (
         <>
-            <header className="h-16 bg-card border-b border-border flex items-center justify-end px-6 sticky top-0 z-10">
-                <div className="flex items-center space-x-6">
+            <header className="h-16 bg-card border-b border-border flex items-center justify-between px-4 sm:px-6 sticky top-0 z-10">
+                <button
+                    onClick={onMenuClick}
+                    className="p-2 mr-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors md:hidden"
+                >
+                    <Menu className="h-6 w-6" />
+                </button>
+
+                {/* Spacer for desktop to push content to the right */}
+                <div className="hidden md:block flex-1"></div>
+
+                <div className="flex items-center space-x-4 sm:space-x-6">
                     <div className="flex items-center space-x-3">
                         <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                             <User className="h-5 w-5" />
