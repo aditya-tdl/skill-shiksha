@@ -13,7 +13,7 @@ import { Suspense } from "react";
 export const courseData = {
     mern: {
         title: "MERN Stack Full-Stack Developer",
-        price: "₹30,000",
+        price: "₹25,000",
         description: "A comprehensive 6-month (24-week) program covering MongoDB, Express.js, React, and Node.js for industrial full-stack web development.",
         overview: [
             { week: "Week 1", topic: "Web Fundamentals & HTML" },
@@ -90,7 +90,7 @@ export const courseData = {
     },
     nodejs: {
         title: "Node.js Backend Developer",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "An intensive 12-week backend specialization focusing on Node.js, Express, MongoDB, and production-ready API development.",
         overview: [
             { week: "Week 1", topic: "Node Architecture" },
@@ -143,7 +143,7 @@ export const courseData = {
     },
     react: {
         title: "React.js Frontend Developer",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "A specialized 12-week program focused on modern React development, UI/UX best practices, and production-ready frontend applications.",
         overview: [
             { week: "Week 1", topic: "Modern JavaScript" },
@@ -196,7 +196,7 @@ export const courseData = {
     },
     flutter: {
         title: "Flutter Developer",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "A comprehensive 12-week mobile development program covering Flutter, Dart, Firebase, and cross-platform app development for iOS and Android.",
         overview: [
             { week: "Week 1", topic: "Dart Basics" },
@@ -249,7 +249,7 @@ export const courseData = {
     },
     devops: {
         title: "Cloud & DevOps Engineer",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "A comprehensive 12-week program focused on cloud infrastructure, CI/CD pipelines, containerization, and modern deployment strategies.",
         overview: [
             { week: "Week 1", topic: "Linux & Shell Scripting" },
@@ -302,7 +302,7 @@ export const courseData = {
     },
     manual_testing: {
         title: "Manual Quality Assurance Tester",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "A comprehensive 12-week program focused on manual software testing, test case design, defect tracking, and QA methodologies.",
         overview: [
             { week: "Week 1", topic: "Software Testing Basics" },
@@ -355,7 +355,7 @@ export const courseData = {
     },
     ui_ux: {
         title: "UI/UX Designer",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "An intensive 12-week design boot-camp teaching user research, wireframing, prototyping, and modern interface design using Figma.",
         overview: [
             { week: "Week 1", topic: "Design Principles" },
@@ -408,7 +408,7 @@ export const courseData = {
     },
     project_manager: {
         title: "IT Project Manager",
-        price: "₹15,000",
+        price: "₹14,999",
         description: "A 12-week program on managing software projects, Agile/Scrum methodologies, team coordination, and project delivery.",
         overview: [
             { week: "Week 1", topic: "Project Management Basics" },
