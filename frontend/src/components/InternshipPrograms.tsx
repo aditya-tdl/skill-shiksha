@@ -105,10 +105,10 @@ const InternshipPrograms = () => {
 
                 <div className="flex items-center justify-between mt-auto">
                   <div>
-                    <span className="text-2xl font-bold font-display">₹{p.price.toLocaleString()}</span>
+                    {/* <span className="text-2xl font-bold font-display">₹{p.price.toLocaleString()}</span>
                     {p.emiAvailable && (
                       <span className="text-xs text-muted-foreground ml-1">/ EMI available</span>
-                    )}
+                    )} */}
                   </div>
                   <Button asChild size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-1">
                     <Link href={`/apply?program=${p._id}`}>

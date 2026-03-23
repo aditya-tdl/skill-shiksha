@@ -33,8 +33,8 @@ const mentors = [
         company: "TechDock Labs",
         location: "India",
         image: vivekImg,
-        bio: "Full Stack Mobile Developer with decent experience and expertise. He specializes in building seamless, high-performance cross-platform applications.",
-        expertise: ["Flutter", "Mobile Architecture", "Full Stack"],
+        bio: "Full Stack Mobile Developer with strong expertise in Flutter and modern Mobile Architecture, experienced in building seamless, high-performance cross-platform applications. Proficient in Full Stack Development with Node.js, and skilled in designing scalable system architectures.Experienced in Cloud, DevOps, and performance optimization, ensuring reliable, efficient, and production-ready solutions across the entire development lifecycle.",
+        expertise: ["Flutter", "Mobile Architecture", "Full Stack", "Node js", "Docker"],
         companyColor: "text-blue-500",
         companyBg: "bg-blue-500/10",
     },
@@ -197,10 +197,14 @@ export default function MentorsPage() {
                                                     <Briefcase className="w-4 h-4 shrink-0 text-primary/70" />
                                                     <span className="truncate" title={mentor.role}>{mentor.role}</span>
                                                 </p>
-                                                <p className="text-muted-foreground/70 flex items-center gap-1.5 text-sm min-w-0">
-                                                    <MapPin className="w-4 h-4 shrink-0" />
-                                                    <span className="truncate" title={mentor.location}>{mentor.location}</span>
-                                                </p>
+                                                <div className="flex items-center gap-2 mt-0.5">
+                                                    <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-none font-medium text-[11px] px-2 py-0.5">
+                                                        Specialised
+                                                    </Badge>
+                                                    <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-none font-medium text-[11px] px-2 py-0.5">
+                                                        5+ Years Exp.
+                                                    </Badge>
+                                                </div>
                                             </div>
                                         </div>
 
