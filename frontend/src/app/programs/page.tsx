@@ -244,7 +244,7 @@ export const courseData = {
         outcomes: {
             certificate: "Flutter Developer (Beginner–Intermediate)",
             portfolio: "GitHub with live projects",
-            career: "Internship / Junior Flutter Developer"
+            career: "Training / Junior Flutter Developer"
         }
     },
     devops: {

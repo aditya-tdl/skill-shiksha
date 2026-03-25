@@ -4,7 +4,8 @@ import {
     getAdmissions,
     getAdmissionById,
     updateAdmission,
-    deleteAdmission
+    deleteAdmission,
+    updateConnectStatus
 } from '../controllers/admissionController.js';
 import { protect, admin } from '../utils/authMiddleware.js';
 
@@ -29,6 +30,11 @@ router.get('/:id', protect, admin, getAdmissionById);
 // @desc    Update a specific student admission
 // @access  Private/Admin
 router.put('/:id', protect, admin, updateAdmission);
+
+// @route   PATCH /api/admission/:id/connect-status
+// @desc    Update connect status of an admission
+// @access  Private/Admin
+router.patch('/:id/connect-status', protect, admin, updateConnectStatus);
 
 // @route   DELETE /api/admission/:id
 // @desc    Delete a specific student admission

@@ -18,6 +18,7 @@ const app = express();
 const allowedOrigins = [
     'https://jncvd963-3000.inc1.devtunnels.ms/',
     'http://localhost:3000',
+    'http://localhost:3001',
     'http://localhost:5173',
     'https://skillshiksha.ai',
     'https://www.skillshiksha.ai'

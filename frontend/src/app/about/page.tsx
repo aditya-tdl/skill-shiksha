@@ -17,7 +17,7 @@ export default function AboutPage() {
                         Transforming Careers Through <span className="text-primary italic">Real-World</span> Learning
                     </h1>
                     <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-                        Skill Shiksha is India's premier offline internship & training institute for aspiring developers. We bridge the gap between academic knowledge and industry expectations.
+                        Skill Shiksha is India's premier offline training institute for aspiring developers. We bridge the gap between academic knowledge and industry expectations.
                     </p>
                 </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     User, Mail, Phone, BookOpen, Briefcase,
@@ -66,8 +66,20 @@ export default function RegisterPage() {
     const [isOtpVerified, setIsOtpVerified] = useState(false);
     const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
     const [otpError, setOtpError] = useState("");
+    const [resendCountdown, setResendCountdown] = useState(0);
 
     const { toast } = useToast();
+    
+    // Timer logic for OTP resend
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (resendCountdown > 0) {
+            timer = setInterval(() => {
+                setResendCountdown(prev => prev - 1);
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [resendCountdown]);
 
     const validateStep1 = () => {
         const newErrors: { [key: string]: string } = {};
@@ -121,7 +133,17 @@ export default function RegisterPage() {
         if (formData.phone === '0000000000') {
             setIsOtpSent(true);
             setOtpError("");
+            setResendCountdown(60);
             toast({ title: "OTP Sent (Mock)", description: "Use 123456 to verify." });
+            return;
+        }
+
+        if (resendCountdown > 0) {
+            toast({
+                variant: "destructive",
+                title: "Please wait",
+                description: `You can resend OTP in ${resendCountdown} seconds.`
+            });
             return;
         }
 
@@ -145,17 +167,24 @@ export default function RegisterPage() {
 
             setConfirmationResult(confirmation);
             setIsOtpSent(true);
+            setResendCountdown(60);
             toast({ title: "OTP Sent", description: "Please check your phone for the verification code." });
         } catch (error: any) {
             console.error("Error in handleSendOtp:", error);
 
             // Provide a more user-friendly error message for rate-limiting
             if (error.code === 'auth/too-many-requests') {
-                setOtpError("Too many attempts. Please wait a few minutes or use a test number.");
+                const msg = "Too many attempts. Please wait a few minutes.";
+                setOtpError(msg);
+                toast({ variant: "destructive", title: "Rate Limit Exceeded", description: msg });
             } else if (error.code === 'auth/invalid-phone-number') {
-                setOtpError("Firebase rejected this phone number format.");
+                const msg = "Invalid phone number format.";
+                setOtpError(msg);
+                toast({ variant: "destructive", title: "Auth Error", description: msg });
             } else {
-                setOtpError(error.message || "Failed to send OTP. Please try again.");
+                const msg = error.message || "Failed to send OTP.";
+                setOtpError(msg);
+                toast({ variant: "destructive", title: "Error", description: msg });
             }
 
             // Properly reset recaptcha so they can try again without a page refresh
@@ -188,6 +217,18 @@ export default function RegisterPage() {
         if (formData.phone === '0000000000' && otp === '123456') {
             setIsOtpVerified(true);
             toast({ title: "Phone Verified (Mock)", description: "Developer bypass successful." });
+            
+            // Initial partial registration
+            fetch(`${BASE_URL}/admission/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone
+                })
+            }).catch(err => console.error("Initial registration error:", err));
+            
             setStep(s => Math.min(s + 1, 3));
             return;
         }
@@ -199,12 +240,30 @@ export default function RegisterPage() {
                 await confirmationResult.confirm(otp);
                 setIsOtpVerified(true);
                 toast({ title: "Phone Verified", description: "Your phone number has been verified successfully." });
+                
+                // Initial partial registration
+                try {
+                    await fetch(`${BASE_URL}/admission/register`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone
+                        }),
+                    });
+                } catch (apiErr) {
+                    console.error("Initial partial registration error:", apiErr);
+                }
+
                 // Move to next step automatically
                 setStep(s => Math.min(s + 1, 3));
             }
         } catch (error: any) {
             console.error("Error verifying OTP:", error);
-            setOtpError("Invalid OTP. Please try again.");
+            const msg = "Invalid OTP. Please try again.";
+            setOtpError(msg);
+            toast({ variant: "destructive", title: "Verification Failed", description: msg });
         } finally {
             setLoading(false);
         }
@@ -491,15 +550,36 @@ export default function RegisterPage() {
 
                                         {!isOtpVerified ? (
                                             !isOtpSent ? (
-                                                <Button type="button" onClick={handleSendOtp} disabled={loading} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
-                                                    {loading ? "Sending..." : "Verify Mobile Number"}
-                                                    {!loading && <ShieldCheck className="ml-2 w-5 h-5" />}
+                                                <Button 
+                                                    type="button" 
+                                                    onClick={handleSendOtp} 
+                                                    disabled={loading || resendCountdown > 0} 
+                                                    className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all disabled:opacity-70"
+                                                >
+                                                    {loading ? "Sending..." : resendCountdown > 0 ? `Resend in ${resendCountdown}s` : "Verify Mobile Number"}
+                                                    {!loading && resendCountdown === 0 && <ShieldCheck className="ml-2 w-5 h-5" />}
                                                 </Button>
                                             ) : (
-                                                <Button type="button" onClick={handleVerifyOtp} disabled={loading || otp.length !== 6} className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all">
-                                                    {loading ? "Verifying..." : "Confirm OTP & Continue"}
-                                                    {!loading && <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
-                                                </Button>
+                                                <div className="space-y-4">
+                                                    <Button 
+                                                        type="button" 
+                                                        onClick={handleVerifyOtp} 
+                                                        disabled={loading || otp.length !== 6} 
+                                                        className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl text-md font-bold group shadow-xl transition-all"
+                                                    >
+                                                        {loading ? "Verifying..." : "Confirm OTP & Continue"}
+                                                        {!loading && <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
+                                                    </Button>
+                                                    
+                                                    <button 
+                                                        type="button"
+                                                        onClick={handleSendOtp}
+                                                        disabled={loading || resendCountdown > 0}
+                                                        className="w-full text-center text-xs font-bold text-muted-foreground hover:text-primary transition-colors disabled:opacity-50"
+                                                    >
+                                                        {resendCountdown > 0 ? `Resend code in ${resendCountdown}s` : "Didn't receive code? Resend OTP"}
+                                                    </button>
+                                                </div>
                                             )
                                         ) : (
                                             <Button type="button" onClick={nextStep} className="w-full h-14 bg-green-500 hover:bg-green-600 text-white rounded-xl text-md font-bold group shadow-xl transition-all">

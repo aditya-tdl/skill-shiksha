@@ -134,7 +134,7 @@ const AnimatedHeroSection = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
                     <Link href="/apply" className="w-full sm:w-auto">
                         <Button size="lg" className="w-full px-10 py-6 rounded-xl bg-primary text-primary-foreground text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/25">
-                            Apply for Internship
+                            Apply for Training
                         </Button>
                     </Link>
                     <Link href="/programs" className="w-full sm:w-auto">

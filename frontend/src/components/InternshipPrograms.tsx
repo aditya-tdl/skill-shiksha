@@ -53,7 +53,7 @@ const InternshipPrograms = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-            Internship <span className="gradient-text">Programs</span>
+            Training <span className="gradient-text">Programs</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Hands-on, in-office training programs designed to make you job-ready.
@@ -68,7 +68,7 @@ const InternshipPrograms = () => {
           <div className="text-center text-destructive py-12">{error}</div>
         ) : programs.length === 0 ? (
           <div className="text-center text-muted-foreground py-12">
-            No internship programs available at the moment.
+            No Training programs available at the moment.
           </div>
         ) : (
           <div className="grid md:grid-cols-3 gap-6">

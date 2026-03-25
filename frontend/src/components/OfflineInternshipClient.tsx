@@ -39,7 +39,7 @@ function OfflineProgramsContent({ locationName }: Props) {
                         Physical Center in {locationName}
                     </Badge>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 font-display leading-tight">
-                        Best Offline IT Internships in <span className="gradient-text">{locationName}</span>
+                        Best Offline IT Training in <span className="gradient-text">{locationName}</span>
                     </h1>
                     <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
                         Join our exclusive 12-week physical bootcamp in {locationName}. Experience hands-on, face-to-face mentorship with industry experts. Transform from a beginner to an industry-ready professional directly at our physical development center.

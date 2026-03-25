@@ -23,9 +23,18 @@ const admissionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    //career_status
     status: {
         type: String,
         required: true
+    },
+    //connect_status
+    connect_status: {
+        type: String,
+        required: true,
+        enum: ['pending', 'contacted', 'joined'],
+        default: 'pending'
+
     },
     gender: {
         type: String,

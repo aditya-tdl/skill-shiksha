@@ -26,7 +26,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
-              India's premier offline internship & training institute for aspiring developers.
+              India's premier offline training institute for aspiring developers.
             </p>
             <div className="flex gap-4">
               {["Twitter", "LinkedIn", "Instagram"].map((s) => (
@@ -40,10 +40,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Programs</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/programs?tab=mern" className="hover:text-foreground transition-colors">MERN Internship</Link></li>
-              <li><Link href="/programs?tab=react" className="hover:text-foreground transition-colors">React Internship</Link></li>
-              <li><Link href="/programs?tab=nodejs" className="hover:text-foreground transition-colors">Backend Internship</Link></li>
-              <li><Link href="/programs?tab=flutter" className="hover:text-foreground transition-colors">Flutter Internship</Link></li>
+              <li><Link href="/programs?tab=mern" className="hover:text-foreground transition-colors">MERN Training</Link></li>
+              <li><Link href="/programs?tab=react" className="hover:text-foreground transition-colors">React Training</Link></li>
+              <li><Link href="/programs?tab=nodejs" className="hover:text-foreground transition-colors">Backend Training</Link></li>
+              <li><Link href="/programs?tab=flutter" className="hover:text-foreground transition-colors">Flutter Training</Link></li>
             </ul>
           </div>
 

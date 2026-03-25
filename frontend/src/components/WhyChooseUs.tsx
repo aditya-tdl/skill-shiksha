@@ -17,7 +17,7 @@ const features = [
   {
     icon: Code2,
     title: "Live Client Projects",
-    description: "Build production-grade applications for real startups and businesses during your internship.",
+    description: "Build production-grade applications for real startups and businesses during your Training.",
   },
   {
     icon: GraduationCap,
