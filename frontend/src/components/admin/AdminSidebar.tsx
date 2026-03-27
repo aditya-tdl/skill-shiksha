@@ -41,7 +41,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             <div className="flex items-center justify-between h-16 border-b border-border px-4">
                 <Link href="/" className="flex gap-2">
                     <Image
-                        src="/logo.png?v=2"
+                        src="/logo2.png"
                         alt="Skill Shiksha Logo"
                         width={200}
                         height={30}

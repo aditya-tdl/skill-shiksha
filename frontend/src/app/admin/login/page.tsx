@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
                 <div className="text-center flex flex-col items-center">
                     <Link href="/" className="inline-block  mb-2 flex items-start justify-start">
                         <Image
-                            src="/logo.png?v=2"
+                            src="/logo2.png"
                             alt="Skill Shiksha Logo"
                             width={190}
                             height={40}
