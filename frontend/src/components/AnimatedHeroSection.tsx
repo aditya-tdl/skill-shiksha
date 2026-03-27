@@ -109,7 +109,7 @@ const AnimatedHeroSection = () => {
                             <Sparkles className="absolute -top-4 -right-2 md:-top-6 md:-right-8 text-primary w-6 h-6 md:w-8 md:h-8 opacity-80 animate-pulse" />
                             <Sparkles className="absolute -bottom-3 -left-2 md:-bottom-5 md:-left-8 text-accent w-4 h-4 md:w-6 md:h-6 opacity-60 animate-pulse delay-150" />
 
-                            <div className="relative px-6 py-2 md:px-10 md:py-4 border-2 md:border-[4px] border-primary/50 rounded-2xl md:rounded-3xl bg-background/50 shadow-inner overflow-hidden min-w-[200px] md:min-w-[400px]">
+                            <div className="relative flex items-center justify-center px-6 py-2 md:px-10 md:py-4 border-2 md:border-[4px] border-primary/50 rounded-2xl md:rounded-3xl bg-background/50 shadow-inner overflow-hidden w-[260px] sm:w-[320px] md:w-[600px]">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={index}
@@ -117,7 +117,7 @@ const AnimatedHeroSection = () => {
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ y: -50, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "easeOut" }}
-                                        className="text-primary font-black"
+                                        className="text-primary font-black whitespace-nowrap text-center"
                                     >
                                         {programs[index]}
                                     </motion.div>
