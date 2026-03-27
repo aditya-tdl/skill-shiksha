@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="flex flex-col">
             <Link href="/" className="inline-block -ml-7 mb-2 flex items-start justify-start">
               <Image
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Skill Shiksha Logo"
                 width={150}
                 height={40}

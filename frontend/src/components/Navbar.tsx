@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="section-container flex h-16 items-center justify-between">
         <Link href="/" className="flex -ml-12 gap-2">
           <Image
-            src="/logo.png"
+            src="/logo2.png"
             alt="Skill Shiksha Logo"
             width={250}
             height={50}
